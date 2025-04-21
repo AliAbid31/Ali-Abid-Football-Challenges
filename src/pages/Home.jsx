@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 
 function Home() {
   const handleGoalsClick = () => {
-    window.location.href = `/goals.html`;
+    window.location.href = `./goals.html`;
   };
   const handleAssistsClick = () => {
-    window.location.href = `/assists.html`;
+    window.location.href = `./assists.html`;
   }
 
   const handleTrophiesClick = () => {
-    window.location.href = `/trophies.html`;
+    window.location.href = `./trophies.html`;
   }
 
   return (
