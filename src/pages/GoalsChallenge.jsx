@@ -176,3 +176,4 @@ export default function GoalsChallenge() {
     </section>
   );
 }
+import default GoalsChallenge;
