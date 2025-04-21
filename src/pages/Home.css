@@ -1,0 +1,215 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+    animation: change 4s infinite ease-in-out;
+    overflow: hidden;
+}
+.div11, .div12, .div13 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 26vw;
+  }
+  .section1 p {
+    font-family: monospace;
+    margin-top: 2vh; /* Ajuste ici pour descendre le texte */
+    font-size: 3vw; /* Ajustable aussi si nécessaire */
+  }
+  
+  .div11 img,
+  .div12 img,
+  .div13 img {
+    height: 40vh;
+    width: 100%; /* prend tout le conteneur sans dépasser */
+    object-fit: cover;
+    margin-bottom: 1vh;
+  }
+
+@keyframes change{
+    0%{
+        background-color: #271258;
+    }
+    50%{
+        background-color: #133687;
+    }
+    100%{
+        background-color: #271248;
+    }
+}
+    img:hover {
+        transform: scale(1.1);
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+    }
+    .div11 p {
+        color: rgb(93, 169, 236);
+        animation: color_change 3s infinite;
+    }
+    @keyframes color_change {
+        0% { color: rgb(93, 169, 236); }
+        50% { color: #159a67; }
+        100% { color: rgb(51, 130, 199); }
+    }
+    .div12 p {
+        color: rgb(93, 169, 236);
+        animation: color_change2 3s infinite;
+    }
+    @keyframes color_change2 {
+        0% { color: rgb(185, 233, 123); }
+        50% { color: rgb(224, 125, 26); }
+        100% { color: #a3dd1a; }
+
+    }
+    *{font-family: monospace;}
+    
+    .section1 {
+        display: flex;
+        flex-direction: column;
+        background-color: transparent !important;
+        align-items: center;
+    }
+    h2 {
+        position: relative;
+        top: -7vh; /* Déplace le titre plus haut */
+        margin-bottom: 5vh;
+        font-size: 2rem;
+        color: white;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 0;
+        animation: 
+            typing 3s steps(30, end) forwards,
+            hide-cursor 0.1s forwards 3s;
+        border-right: 0.4vh solid red; /* Curseur rouge */
+    }
+    
+    /* Animation de frappe au clavier */
+    @keyframes typing {
+        from { width: 0; }
+        to { width: 100%; }
+    }
+    .line{
+        position: relative;
+        animation: appear 3s forwards;
+    }
+    @keyframes appear {
+        0% { width: 0; }
+        100% { width: 100%; }
+    }
+    
+    /* Disparition du curseur */
+    @keyframes hide-cursor {
+        to { border-right-color: transparent; }
+    }
+    p {
+        position: relative;
+        display: inline-block;
+        transition: all 0.3s ease;
+    }
+
+    p:hover {
+        transform: scale(1.05);
+        z-index: 10;
+    }
+
+    /* Fond coloré qui s'agrandit */
+    p::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background-color: currentColor;
+        transform: translate(-50%, -50%);
+        transition: all 0.3s ease;
+        z-index: -1;
+        opacity: 0.3;
+        border-radius: 5px;
+    }
+
+    p:hover::before {
+        width: calc(100% + 20px);
+        height: calc(100% + 20px);
+        opacity: 0.7;
+    }
+    img{
+        margin-top: 2vh;
+        display: block;
+    }
+
+    /* Bordure qui apparaît */
+    p:hover {
+        border-color: currentColor;
+    }
+
+    /* Ligne de soulignement */
+    p::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        width: 100%;
+        height: 2px;
+        background: black;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    p:hover::after {
+        transform: scaleX(1);
+    }
+    .div13 p {
+        color: rgb(93, 169, 236);
+        animation: color_change 3s infinite;
+    }
+    @keyframes color_change {
+        0% { color: rgb(236, 93, 155); }
+        50% { color: #9a8415; }
+        100% { color: rgb(236, 95, 165); }
+    }
+
+.div1{
+    display: flex;
+    background-color: black;
+}
+.typing-text {
+font-size: 2.5rem;
+color: rgb(140, 223, 140);
+white-space: nowrap;
+overflow: hidden;
+border-right: 2px solid rgb(194, 16, 16);
+width: 0;
+animation: typing 4s steps(25, end) forwards, hide-cursor 0.1s forwards;
+animation-delay: 0s, 4s; /* 2 animations, 2 timings */
+}
+
+.underline {
+height: 3px;
+width: 0;
+background-color: red;
+margin-top: 5px;
+animation: underline-grow 4s forwards;
+animation-delay: 4s;
+}
+@keyframes hide-cursor {
+to {
+border-right: none;
+}
+}
+
+/* Animation du texte lettre par lettre */
+@keyframes typing {
+from { width: 0; }
+to { width: 33ch; } /* Ajuste selon le nombre de caractères */
+}
+
+/* Animation de la ligne */
+@keyframes underline-grow {
+from { width: 0; }
+to { width: 100%; }
+}
