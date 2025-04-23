@@ -275,8 +275,8 @@ const clubs = [
     {
         name: "Real Madrid CF",
         name2: "RealMadrid",
-        Laliga: 36, // A confirmer
-        Leagues: 36, // A confirmer
+        Laliga: 36, 
+        Leagues: 36, 
         DomesticCups: 34,
         ChampionsLeagues: 15,
         InternationalCups: 38,
