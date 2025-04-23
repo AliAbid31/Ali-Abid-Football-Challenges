@@ -98,13 +98,6 @@ const players = [
         image: "/icons_processed/processed_Xavi.png"
     },
     {
-        name: "Manuel Neuer",
-        goals: 0,
-        assists: 4,
-        name2: "Neuer",
-        image: "/icons_processed/processed_Neuer.png"
-    },
-    {
         name: "Cristiano Ronaldo",
         goals: 931,
         assists: 262,
@@ -159,13 +152,6 @@ const players = [
         assists: 60,
         name2: "Dawsari",
         image: "/icons_processed/processed_AlDawsari.png"
-    },
-    {
-        name: "Giuanluigi Buffon",
-        goals: 0,
-        assists: 3,
-        name2: "Buffon",
-        image: "/icons_processed/processed_Buffon.png"
     },
     {
         name: "Puskás",
@@ -390,13 +376,6 @@ const players = [
         assists: 61,
         name2: "Kante",
         image: "/icons_processed/processed_Kante.png"
-    },
-    {
-        name: "Emiliano Martinez",
-        goals: 0,
-        assists: 1,
-        name2: "Martinez",
-        image: "/icons_processed/processed_Martinez.png"
     },
     {
         name: "Minamino",
