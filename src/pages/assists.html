@@ -247,7 +247,7 @@
     </section>
 
     <script type="module">
-      import { players } from './objects_js/players.js';
+      import { players } from '../data/players.js';
 
       const restartButton = document.querySelector('.restart-button');
       const textInputs = document.querySelectorAll('.inputs input');
@@ -281,7 +281,7 @@
           const randomNumber = Math.floor(Math.random() * players.length);
           currentPlayer = players[randomNumber];
           
-          imageContainer.src = './icons_processed/processed_' + currentPlayer.name2 + '.png';
+          imageContainer.src = '../../public/icons_processed/processed_' + currentPlayer.name2 + '.png';
           textContainer.textContent = currentPlayer.name;
           
           rotationCount++;
