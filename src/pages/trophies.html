@@ -259,7 +259,7 @@
     </section>
 
     <script type="module">
-      import { clubs } from './objects_js/clubs.js';
+      import { clubs } from '../data/clubs.js';
     
       const restartButton = document.querySelector('.restart-button');
       const textInputs = document.querySelectorAll('.inputs input');
@@ -295,7 +295,7 @@
           const randomNumber = Math.floor(Math.random() * clubs.length);
           currentClub = clubs[randomNumber];
           
-          imageContainer.src = `./modified_logos/${currentClub.name2}_60x60.png`;
+          imageContainer.src = `../../public/modified_logos/${currentClub.name2}_60x60.png`;
           textContainer.textContent = currentClub.name;
           
           rotationCount++;
