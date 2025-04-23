@@ -7,7 +7,7 @@ const clubs = [
         ChampionsLeagues : 7,
         DomesticCups: 13,
         InternationalCups: 18,
-        Total: 50,
+        Total: 50
     },
     {
         name: "Ajax Amsterdam",
@@ -16,7 +16,7 @@ const clubs = [
         ChampionsLeagues: 4,
         DomesticCups: 29,
         InternationalCups: 11,
-        Total: 76,
+        Total: 76
     },
     {
         name: "Anderlecht Bruxelles",
@@ -24,7 +24,7 @@ const clubs = [
         Leagues: 34,
         DomesticCups: 25,
         InternationalCups: 5,
-        Total: 64,
+        Total: 64
     },
     {
         name: "Arsenal",
@@ -33,7 +33,7 @@ const clubs = [
         Leagues: 13,
         DomesticCups: 33,
         InternationalCups: 2,
-        Total: 48,
+        Total: 48
     },
     {
         name: "Aston Villa",
@@ -43,14 +43,14 @@ const clubs = [
         ChampionsLeagues: 1,
         DomesticCups: 13,
         InternationalCups: 3,
-        Total: 24,
+        Total: 24
     },
     {
         name: "Atalanta Bergamasca",
         name2: "Atalanta",
         DomesticCups: 1,
         InternationalCups: 1,
-        Total: 2,
+        Total: 2
     },
     {
         name: "Atletic Bilbao",
@@ -58,7 +58,7 @@ const clubs = [
         Leagues: 8,
         Laliga: 8,
         DomesticCups: 27,
-        Total: 35,
+        Total: 35
     },
     {
         name: "Atlético de Madrid",
@@ -67,7 +67,7 @@ const clubs = [
         Laliga: 11,
         DomesticCups: 14,
         InternationalCups: 8,
-        Total: 33,
+        Total: 33
     },
     {
         name: "FC Barcelona",
@@ -77,7 +77,7 @@ const clubs = [
         DomesticCups: 48,
         ChampionsLeagues: 5,
         InternationalCups: 11,
-        Total: 95,
+        Total: 95
     },
     {
         name: "Bayern Munich",
@@ -87,7 +87,7 @@ const clubs = [
         DomesticCups: 36,
         ChampionsLeagues: 6,
         InternationalCups: 14,
-        Total: 83,
+        Total: 83
     },
     {
         name: "Juventus FC",
@@ -97,7 +97,7 @@ const clubs = [
         DomesticCups: 24,
         ChampionsLeagues: 2,
         InternationalCups: 11,
-        Total: 71,
+        Total: 71
     },
     {
         name: "Benfica Lisbonne",
@@ -106,7 +106,7 @@ const clubs = [
         DomesticCups: 26,
         ChampionsLeagues: 2,
         InternationalCups: 2,
-        Total: 70,
+        Total: 70
     },
     {
         name: "Celtic Glasgow",
@@ -115,7 +115,7 @@ const clubs = [
         ChampionsLeagues: 1,
         DomesticCups: 64,
         InternationalCups: 1,
-        Total: 120,
+        Total: 120
     },
     {
         name: "Chelsea",
@@ -125,14 +125,14 @@ const clubs = [
         DomesticCups: 17,
         ChampionsLeagues: 2,
         InternationalCups: 9,
-        Total: 32,
+        Total: 32
     },
     {
         name: "Club Brugge",
         name2: "ClubBrugge",
         Leagues: 19,
         DomesticCups: 28,
-        Total: 47,
+        Total: 47
     },
     {
         name: "Borussia Dortmund",
@@ -142,7 +142,7 @@ const clubs = [
         DomesticCups : 11,
         ChampionsLeagues : 1,
         InternationalCups : 3,
-        Total : 22,
+        Total : 22
     },
     {
       name : "Everton FC",
@@ -151,7 +151,7 @@ const clubs = [
       Leagues : 9,
       DomesticCups : 14,
       InternationalCups : 1,
-      Total : 24,
+      Total : 24
     },
     {
         name: "Feyenoord Rotterdam",
@@ -160,7 +160,7 @@ const clubs = [
         DomesticCups: 19,
         ChampionsLeagues: 1,
         InternationalCups: 4,
-        Total: 39,
+        Total: 39
     },
     {
         name: "Galatassaray",
@@ -168,7 +168,7 @@ const clubs = [
         Leagues: 24,
         DomesticCups: 35,
         InternationalCups: 2,
-        Total: 61,
+        Total: 61
     },
     {
         name: "Inter Milan",
@@ -178,7 +178,7 @@ const clubs = [
         ChampionsLeagues: 3,
         DomesticCups: 17,
         InternationalCups: 9,
-        Total: 46,
+        Total: 46
     },
     {
         name: "Lazios Rome",
@@ -187,7 +187,7 @@ const clubs = [
         SerieA: 2,
         DomesticCups: 12,
         InternationalCups: 2,
-        Total: 16,
+        Total: 16
     },
     {
         name: "Liverpool FC",
@@ -197,7 +197,7 @@ const clubs = [
         DomesticCups: 34,
         ChampionsLeagues: 6,
         InternationalCups: 14,
-        Total: 68,
+        Total: 68
     },
     {
         name: "Manchester City",
@@ -207,7 +207,7 @@ const clubs = [
         DomesticCups: 22,
         ChampionsLeagues: 1,
         InternationalCups: 4,
-        Total: 36,
+        Total: 36
     },
     {
         name: "Manchester United",
@@ -217,7 +217,7 @@ const clubs = [
         DomesticCups: 40,
         ChampionsLeagues: 3,
         InternationalCups: 8,
-        Total: 68,
+        Total: 68
     },
     {
       name : "Olympique de Marseille",
@@ -227,7 +227,7 @@ const clubs = [
       DomesticCups : 16,
       ChampionsLeagues : 1,
       InternationalCups : 2,
-      Total : 27,
+      Total : 27
     },
     {
         name: "AS Monaco",
@@ -235,7 +235,7 @@ const clubs = [
         Ligue1: 8,
         Leagues: 8,
         DomesticCups: 10,
-        Total: 18,
+        Total: 18
     },
     {
         name: "Napoli",
@@ -244,7 +244,7 @@ const clubs = [
         Leagues: 3,
         DomesticCups: 8,
         InternationalCups: 1,
-        Total: 12,
+        Total: 12
     },
     {
         name: "FC Porto",
@@ -253,7 +253,7 @@ const clubs = [
         DomesticCups: 45,
         ChampionsLeagues: 2,
         InternationalCups: 7,
-        Total: 82,
+        Total: 82
     },
     {
       name : "Paris Saint-Germain",
@@ -262,7 +262,7 @@ const clubs = [
       Leagues : 13,
       DomesticCups : 37,
       InternationalCups : 2, // A confirmer
-      Total : 52, // A confirmer
+      Total : 52 // A confirmer
     },
     {
         name: "Rangers FC",
@@ -270,7 +270,7 @@ const clubs = [
         Leagues: 55,
         DomesticCups: 62,
         InternationalCups: 1,
-        Total: 118,
+        Total: 118
     },
     {
         name: "Real Madrid CF",
@@ -280,7 +280,7 @@ const clubs = [
         DomesticCups: 34,
         ChampionsLeagues: 15,
         InternationalCups: 38,
-        Total: 108, // A confirmer
+        Total: 108 // A confirmer
     },
     {
         name: "Roma",
@@ -289,7 +289,7 @@ const clubs = [
         Leagues: 3,
         DomesticCups: 11,
         InternationalCups: 2,
-        Total: 16,
+        Total: 16
     },
     {
         name: "Sevilla FC",
@@ -298,7 +298,7 @@ const clubs = [
         Laliga: 1,
         DomesticCups: 6,
         InternationalCups: 8,
-        Total: 15,
+        Total: 15
     },
     {
         name: "Sporting Lisbonne",
@@ -306,7 +306,7 @@ const clubs = [
         Leagues: 20,
         DomesticCups: 34,
         InternationalCups: 1,
-        Total: 55,
+        Total: 55
     },
     {
         name: "Stuttgart",
@@ -315,7 +315,7 @@ const clubs = [
         Leagues: 5,
         DomesticCups: 4,
         InternationalCups: 2,
-        Total: 11,
+        Total: 11
     }
 ]
 export {clubs};
