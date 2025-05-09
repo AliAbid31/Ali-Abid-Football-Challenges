@@ -383,21 +383,21 @@ const players = [
         assists: 80,
         name2: "Minamino",
         image: "/icons_processed/processed_Minamino.png"
-    }
+    },
     {
         name: "Gerd Muller",
         goals: 679,
         assists: 173,
         name2: "Muller",
         image: "/icons_processed/processed_Muller.png"
-    }
+    },
     {
         name: "Josef Bichan",
         goals: 915,
         assists: 223,
         name2: "Bichan",
         image: "/icons_processed/processed_Bichan.png"
-    }
+    },
     {
         name: "Romario",
         goals: 768,
@@ -406,6 +406,5 @@ const players = [
         image: "/icons_processed/processed_Romario.png"
     }
 ]
-console.log(players.length)
 
 export {players};

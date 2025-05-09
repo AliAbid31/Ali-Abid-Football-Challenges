@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Jaro&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Jaro', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #000 !important;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2vh 5vw;
+  gap: 3vh;
+}
+
+h1 {
+  font-size: 4vw;
+  text-align: center;
+  color: #E1219E;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8vw;
+  font-size: 1.5vw;
+  width: 10vw;
+  height: 5vh;
+  background-color: #a59e9e;
+  border: 0.2vw solid #dbcdcd;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  margin-bottom: 2vh;
+}
+
+button i {
+  font-size: 2vw;
+  color: #00aaff;
+}
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1vh;
+}
+
+.image-container img {
+  width: 7vw;
+  height: auto;
+  max-width: 15rem;
+}
+
+.image-container p {
+  color: #00aaff; /* Bleu */
+  font-size: 2.5vw;
+  margin: 0;
+  font-weight: bold;
+  background: none !important; /* Désactive le fond */
+  animation: none !important;
+}
+
+.inputs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1vh 1vw;
+  margin-top: 2vh;
+  width: 100%;
+}
+
+@media (min-width: 701px) {
+  .inputs input {
+    width: calc(20% - 1vw);
+    max-width: none;
+    height: 4vh;
+  }
+}
+
+.inputs input {
+  padding: 1vh 1vw;
+  font-size: 1.2vw;
+  border: 0.1rem solid #00aaff;
+  border-radius: 0.5rem;
+  height: 4vh;
+  background-color: #111;
+  color: #00aaff;
+  text-align: center;
+}
+
+.goals-number {
+  font-size: 3vw;
+  color: aquamarine;
+  background: none !important; /* Désactive le fond */
+  animation: none !important;
+}
+
+.divp {
+  position: absolute;
+  top: 1vh;
+  right: 2vw;
+  z-index: 1000;
+}
+
+.divp i {
+  color: #00aaff;
+  font-size: 2vw;
+  cursor: pointer;
+}
+
+.challenge-leaderboard-container {
+  background-color: #111;
+  padding: 15px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+  border: 1px solid #00aaff;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+
+.challenge-leaderboard-container h3 {
+  color: #E1219E;
+  margin-bottom: 0.9vh;
+}
+
+.challenge-leaderboard-list {
+  list-style-type: decimal;
+  padding-left: 2vw;
+  color: aquamarine;
+  text-align: left;
+}
+
+.challenge-leaderboard-list li {
+  margin-bottom: 0.4vh;
+}
+
+.leaderboard-loading, .leaderboard-empty-message {
+  font-style: italic;
+  color: #aaa;
+}
+
+.username {
+  font-weight: bold;
+  color: white;
+  margin-right: 1vw;
+}
+
+.score {
+  color: #00ffaa;
+}
+
+@media (max-width: 700px) {
+  h1 {
+    font-size: 7vw;
+  }
+  
+  button {
+    font-size: 3vw;
+    width: 25vw;
+    height: 5vh;
+    gap: 2vw;
+  }
+  
+  button i {
+    font-size: 3vw;
+  }
+  
+  .image-container img {
+    width: 15vw;
+  }
+  
+  .image-container p {
+    font-size: 5vw;
+  }
+  
+  .inputs input {
+    font-size: 2.5vw;
+    width: calc(48% - 1vw);
+    padding: 1.5vh 2vw;
+    height: 5vh;
+  }
+  
+  .goals-number {
+    font-size: 5vw;
+  }
+  
+  .divp i {
+    font-size: 5vw;
+  }
+  
+  .help {
+    font-size: 2.5vw;
+    max-width: 60vw;
+    padding: 1vw;
+  }
+}
+
+.inputs input:hover {
+  border-inline: 0.5vh solid #00aaff;
+  cursor: pointer;
+}
+
+.inputs input:active {
+  border-inline: 0.5vh solid #00aaff;
+}
+
+.inputs input[data-locked="true"] {
+  color: #00ffaa;
+  background-color: rgba(0, 255, 170, 0.1);
+  border: 0.15rem solid #00ffaa;
+  cursor: not-allowed;
+}
+
+.inputs input::placeholder {
+  color: #aaa;
+  text-align: center;
+  pointer-events: none;
+}
+
+/* Si tu utilises <span className="help-icon-char">?</span> à la place de FontAwesome */
+.help-trigger i {
+  font-weight: bold;
+  margin-right: 0.3vw; /* Ou ajuste le gap sur .help-trigger */
+  font-size: 1.1em; /* Un peu plus grand si c'est un simple caractère */
+}
+
+.help-text {
+  background-color: rgba(10, 10, 20, 0.95);
+  color: #00ffaa; /* Couleur du texte d'aide */
+  font-family: 'Courier New', monospace; /* Police spécifique pour l'aide */
+  padding: 1vw;
+  margin-top: 0.6vh;
+  font-size: 0.8vw; /* TAILLE RÉDUITE */
+  max-width: 20vw; /* LARGEUR RÉDUITE */
+  z-index: 999;
+  white-space: pre-line;
+  border-radius: 5px;
+  border: 1px solid #00aaff;
+  line-height: 1.5;
+}
+
+/* Media query pour ajuster sur mobile */
+@media (max-width: 700px) {
+  .help-trigger {
+    font-size: 3.5vw;
+  }
+  .help-text {
+    font-size: 2.5vw;
+    max-width: 70vw;
+    padding: 0.8vw;
+  }
+}
