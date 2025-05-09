@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { clubs } from '../data/clubs.js'; // Utilisation de clubs.js
 import './Trophies.css'; // Assurez-vous d'avoir un fichier Trophies.css
+import { API_BASE_URL } from './apiConfig';
 
 const TrophiesChallenge = () => {
   // --- Références DOM ---
@@ -151,7 +152,7 @@ const TrophiesChallenge = () => {
     if(!trophiesSpecificLeaderboardListRef.current) return;
     trophiesSpecificLeaderboardListRef.current.innerHTML = '<li class="leaderboard-loading">Chargement...</li>';
     try {
-      const response = await fetch('/api/auth/challenges/leaderboard/trophies'); // Endpoint pour trophies
+      const response = await fetch(`${API_BASE_URL}/api/auth/challenges/leaderboard/trophies`); // Endpoint pour trophies
       if (!response.ok) {
         trophiesSpecificLeaderboardListRef.current.innerHTML = `<li class="leaderboard-empty-message">Erreur (${response.status})</li>`;
         return;
@@ -180,7 +181,7 @@ const TrophiesChallenge = () => {
     if (!token) { alert("Connectez-vous pour enregistrer le score !"); return; }
     const payload = { score: finalScore, challengeType: "trophies" }; // Type de challenge trophies
     try {
-      const response = await fetch('/api/auth/challenges/score', {
+      const response = await fetch(`${API_BASE_URL}/api/auth/challenges/score`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
         body: JSON.stringify(payload)
