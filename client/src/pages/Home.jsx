@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import './Home.css';
 import { FaArrowLeft } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom'; // useNavigate pour les clics sur les challenges
+import { Link, useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from './apiConfig';// useNavigate pour les clics sur les challenges
 
 function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -42,7 +43,7 @@ function Home() {
       if (token) {
         try {
           console.log("validateTokenAndSetUser - Token found, fetching /me");
-          const res = await fetch('/api/auth/me', {
+          const res = await fetch(`${API_BASE_URL}/api/auth/me`, {
             method: 'GET',
             headers: { 'Authorization': `Bearer ${token}` }
           });
@@ -90,7 +91,7 @@ function Home() {
         const newLeaderboardState = { goals: [], assists: [], trophies: [] };
         for (const type of types) {
           console.log(`fetchAllLeaderboards - Fetching ${type} leaderboard`);
-          const res = await fetch(`/api/auth/challenges/leaderboard/${type}`);
+          const res = await fetch(`${API_BASE_URL}/api/auth/challenges/leaderboard/${type}`);
           if (res.ok) {
             newLeaderboardState[type] = await res.json();
             console.log(`fetchAllLeaderboards - ${type} OK`);
@@ -138,7 +139,7 @@ function Home() {
       return;
     }
     try {
-      const res = await fetch('/api/auth/login', {
+      const res = await fetch(`${API_BASE_URL}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username: formData.username, password: formData.password })
@@ -173,7 +174,7 @@ function Home() {
         return;
     }
     try {
-      const res = await fetch('/api/auth/register', {
+      const res = await fetch(`${API_BASE_URL}/api/auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username: formData.username, password: formData.password })
