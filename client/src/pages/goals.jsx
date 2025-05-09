@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { players } from '../data/players.js';
 import './Goals.css';
+import { API_BASE_URL } from './apiConfig';
 
 const GoalsChallenge = () => {
   // --- Références DOM ---
@@ -78,7 +79,7 @@ const GoalsChallenge = () => {
     console.log("[updateUserScoreOnChallengeComplete] Tentative FETCH PUT...");
     
     try {
-      const response = await fetch('/api/auth/challenges/score', {
+      const response = await fetch(`${API_BASE_URL}/api/auth/challenges/score`, {
         method: 'PUT', 
         headers: {
           'Content-Type': 'application/json', 
@@ -182,7 +183,7 @@ const GoalsChallenge = () => {
     goalsSpecificLeaderboardListRef.current.innerHTML = '<li class="leaderboard-loading">Chargement...</li>';
     
     try {
-      const response = await fetch('/api/auth/challenges/leaderboard/goals');
+      const response = await fetch(`${API_BASE_URL}/api/auth/challenges/leaderboard/goals`);
       console.log("[fetchLeaderboard] Statut:", response.status);
       
       if (!response.ok) { 
