@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react'; // Ajout de useCallback
 import { players } from '../data/players.js';
 import './Assists.css';
+import { API_BASE_URL } from './apiConfig';
 
 const AssistsChallenge = () => {
   // --- Références DOM ---
@@ -154,7 +155,7 @@ const AssistsChallenge = () => {
     }
     assistsSpecificLeaderboardListRef.current.innerHTML = '<li class="leaderboard-loading">Chargement...</li>';
     try {
-      const response = await fetch('/api/auth/challenges/leaderboard/assists');
+      const response = await fetch(`${API_BASE_URL}/api/auth/challenges/leaderboard/assists`);
       if (!response.ok) {
         assistsSpecificLeaderboardListRef.current.innerHTML = `<li class="leaderboard-empty-message">Erreur chargement (${response.status})</li>`;
         return;
@@ -186,7 +187,7 @@ const AssistsChallenge = () => {
     if (!token) { alert("Connectez-vous pour enregistrer le score !"); return; }
     const payload = { score: finalScore, challengeType: "assists" };
     try {
-      const response = await fetch('/api/auth/challenges/score', {
+      const response = await fetch(`${API_BASE_URL}/api/auth/challenges/score`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
         body: JSON.stringify(payload)
