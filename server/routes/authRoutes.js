@@ -6,11 +6,24 @@ const authMiddleware = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
-// POST /register (sera /api/auth/register)
+const blockedUsernamePatterns = [
+    /Tbanyit/i, // 'i' pour insensible à la casse
+    // Ajoute d'autres patterns si besoin, ex: /autreMotBloque/i
+];
+
 router.post('/register', async (req, res, next) => {
   const { username, password } = req.body;
   if (!username || !password) return res.status(400).json({ error: 'Username and password are required' });
   if (password.length < 6) return res.status(400).json({ error: 'Password must be at least 6 characters long' });
+
+  // --- NOUVELLE VÉRIFICATION DE LA LISTE NOIRE ---
+  for (const pattern of blockedUsernamePatterns) {
+    if (pattern.test(username)) {
+      console.log(`Tentative d'inscription bloquée pour username correspondant au pattern: ${username}`);
+      return res.status(403).json({ error: 'This username is not allowed.' }); // 403 Forbidden
+    }
+  }
+  // --- FIN DE LA VÉRIFICATION ---
 
   try {
     const existingUser = await User.findOne({ username });
@@ -20,7 +33,7 @@ router.post('/register', async (req, res, next) => {
     await newUser.save();
     res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {
-    if (error.code === 11000) return res.status(400).json({ error: 'Username already exists (DB constraint).' });
+    // ... gestion des erreurs existante ...
     next(error);
   }
 });
