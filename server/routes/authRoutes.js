@@ -7,8 +7,12 @@ const authMiddleware = require('../middleware/authMiddleware');
 const router = express.Router();
 
 const blockedUsernamePatterns = [
-    /Tbanyit/i, // 'i' pour insensible à la casse
-    // Ajoute d'autres patterns si besoin, ex: /autreMotBloque/i
+    /Tbanyit/i, // Bloque si contient "Tbanyit" (insensible à la casse)
+    /Benyat/i, 
+    /Nik/i,
+    /9a7b/,
+    // <-- AJOUTÉ : Bloque si contient "Benyat" (insensible à la casse)
+    // Ajoute d'autres patterns ici si besoin, ex: /autreMotBloque/i
 ];
 
 router.post('/register', async (req, res, next) => {
@@ -16,14 +20,13 @@ router.post('/register', async (req, res, next) => {
   if (!username || !password) return res.status(400).json({ error: 'Username and password are required' });
   if (password.length < 6) return res.status(400).json({ error: 'Password must be at least 6 characters long' });
 
-  // --- NOUVELLE VÉRIFICATION DE LA LISTE NOIRE ---
+  // Vérification de la liste noire
   for (const pattern of blockedUsernamePatterns) {
     if (pattern.test(username)) {
-      console.log(`Tentative d'inscription bloquée pour username correspondant au pattern: ${username}`);
+      console.log(`Tentative d'inscription bloquée pour username '${username}' correspondant au pattern: ${pattern}`);
       return res.status(403).json({ error: 'This username is not allowed.' }); // 403 Forbidden
     }
   }
-  // --- FIN DE LA VÉRIFICATION ---
 
   try {
     const existingUser = await User.findOne({ username });
