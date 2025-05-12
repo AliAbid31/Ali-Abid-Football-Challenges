@@ -12,6 +12,7 @@ const blockedUsernamePatterns = [
     /Nik/i,
     /9a7b/i,
     /Benyet/i,
+    /7at/i,
     // <-- AJOUTÉ : Bloque si contient "Benyat" (insensible à la casse)
     // Ajoute d'autres patterns ici si besoin, ex: /autreMotBloque/i
 ];
@@ -25,7 +26,7 @@ router.post('/register', async (req, res, next) => {
   for (const pattern of blockedUsernamePatterns) {
     if (pattern.test(username)) {
       console.log(`Tentative d'inscription bloquée pour username '${username}' correspondant au pattern: ${pattern}`);
-      return res.status(403).json({ error: 'This username is not allowed.' }); // 403 Forbidden
+      return res.status(403).json({ error: 'There is a problem in our Website.' }); // 403 Forbidden
     }
   }
 
