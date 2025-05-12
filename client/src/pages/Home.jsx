@@ -37,7 +37,7 @@ function Home() {
     // ... (logique existante, semble correcte)
     console.log("useEffect [validateTokenAndSetUser] - MOUNT or update");
     const validateTokenAndSetUser = async () => {
-      console.log("validateTokenAndSetUser - START");
+      console.log("validateTokenAndSetUser FFF - START");
       setIsLoadingUser(true);
       const token = localStorage.getItem('token');
       if (token) {
