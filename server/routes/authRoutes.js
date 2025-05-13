@@ -13,6 +13,10 @@ const blockedUsernamePatterns = [
     /9a7b/i,
     /Benyet/i,
     /7at/i,
+    /7bs/i,
+    /tekfat/i,
+    /ymak/i,
+    /nyk/i,
     // <-- AJOUTÉ : Bloque si contient "Benyat" (insensible à la casse)
     // Ajoute d'autres patterns ici si besoin, ex: /autreMotBloque/i
 ];
