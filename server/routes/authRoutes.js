@@ -23,7 +23,7 @@ const blockedUsernamePatterns = [
 
 router.post('/register', async (req, res, next) => {
   const { username, password } = req.body;
-  const clientIp = req.ip;
+
   if (!username || !password) return res.status(400).json({ error: 'Username and password are required' });
   if (password.length < 6) return res.status(400).json({ error: 'Password must be at least 6 characters long' });
 
@@ -32,9 +32,6 @@ router.post('/register', async (req, res, next) => {
     if (pattern.test(username)) {
       console.log(`Tentative d'inscription bloquée pour username '${username}' correspondant au pattern: ${pattern}`);
       return res.status(403).json({ error: 'There is a problem in our Website.' });
-     for (i=1, i<=100, i++){
-         alert('There is a problem in our website');
-     }
     }
   }
 
@@ -54,7 +51,7 @@ router.post('/register', async (req, res, next) => {
 // POST /login (sera /api/auth/login)
 router.post('/login', async (req, res, next) => {
   const { username, password } = req.body;
-  const clientIp = req.ip;
+
   if (!username || !password) return res.status(400).json({ error: 'Username and password are required' });
 
   try {
