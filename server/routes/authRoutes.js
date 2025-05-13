@@ -7,7 +7,7 @@ const authMiddleware = require('../middleware/authMiddleware');
 const router = express.Router();
 
 const blockedUsernamePatterns = [
-    /Tbanyit/i, // Bloque si contient "Tbanyit" (insensible à la casse)
+    /Tbanyit/i, 
     /Benyat/i, 
     /Nik/i,
     /9a7b/i,
@@ -17,8 +17,7 @@ const blockedUsernamePatterns = [
     /tekfat/i,
     /ymak/i,
     /nyk/i,
-    // <-- AJOUTÉ : Bloque si contient "Benyat" (insensible à la casse)
-    // Ajoute d'autres patterns ici si besoin, ex: /autreMotBloque/i
+
 ];
 
 router.post('/register', async (req, res, next) => {
@@ -39,7 +38,7 @@ router.post('/register', async (req, res, next) => {
     const existingUser = await User.findOne({ username });
     if (existingUser) return res.status(400).json({ error: 'Username already exists' });
 
-    const newUser = new User({ username, password, registrationIp: clientIp });
+    const newUser = new User({ username, password});
     await newUser.save();
     res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {
