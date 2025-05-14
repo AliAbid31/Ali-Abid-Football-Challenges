@@ -77,7 +77,7 @@ const AssistsChallenge = () => {
         setIsRotating(false);
         console.log("[startRotation] Rotation terminée. Joueur final:", newPlayer ? newPlayer.name : "Aucun");
       }
-    }, 150); // Intervalle un peu plus rapide pour la rotation visuelle
+    }, 200); // Intervalle un peu plus rapide pour la rotation visuelle
   }, [lockedInputsCount]); // Dépend de lockedInputsCount pour savoir s'il faut démarrer
 
   const handleInputClick = (clickedInput, index) => {
