@@ -155,7 +155,7 @@ const GoalsChallenge = () => {
     setTotalGoals(newTotalGoals);
     console.log("[handleInputClick] totalGoals:", newTotalGoals);
     
-    clickedInput.value = `${clickedInput.placeholder} ${currentPlayer.name} : ${goalsToAdd}`;
+    clickedInput.value = `${clickedInput.placeholder} (${currentPlayer.name}) : ${goalsToAdd}`;
     clickedInput.dataset.locked = 'true';
     setLockedInputs(prev => prev + 1);
     console.log("[handleInputClick] lockedInputs:", lockedInputs + 1);
