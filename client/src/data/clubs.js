@@ -240,11 +240,11 @@ const clubs = [
     {
         name: "Napoli",
         name2: "Napoli",
-        SerieA: 3,
-        Leagues: 3,
+        SerieA: 4,
+        Leagues: 4,
         DomesticCups: 8,
         InternationalCups: 1,
-        Total: 12
+        Total: 13
     },
     {
         name: "FC Porto",
