@@ -72,22 +72,22 @@ const clubs = [
     {
         name: "FC Barcelona",
         name2: "Barça",
-        Leagues: 27,
-        Laliga: 27,
-        DomesticCups: 48,
+        Leagues: 28,
+        Laliga: 28,
+        DomesticCups: 49,
         ChampionsLeagues: 5,
         InternationalCups: 11,
-        Total: 95
+        Total: 97
     },
     {
         name: "Bayern Munich",
         name2: "Bayern",
-        Leagues: 33,
-        Bundesliga: 33,
+        Leagues: 34,
+        Bundesliga: 34,
         DomesticCups: 36,
         ChampionsLeagues: 6,
         InternationalCups: 14,
-        Total: 83
+        Total: 84
     },
     {
         name: "Juventus FC",
@@ -124,8 +124,8 @@ const clubs = [
         Leagues: 6,
         DomesticCups: 17,
         ChampionsLeagues: 2,
-        InternationalCups: 9,
-        Total: 32
+        InternationalCups: 10,
+        Total: 33
     },
     {
         name: "Club Brugge",
@@ -260,9 +260,9 @@ const clubs = [
       name2 : "PSG",
       Ligue1 : 13,
       Leagues : 13,
-      DomesticCups : 37,
-      InternationalCups : 2, // A confirmer
-      Total : 52 // A confirmer
+      DomesticCups : 38,
+      InternationalCups : 3, // A confirmer
+      Total : 54 // A confirmer
     },
     {
         name: "Rangers FC",
