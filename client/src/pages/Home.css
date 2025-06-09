@@ -391,6 +391,11 @@ body {
       50% { color: #9a8415; }
       100% { color: rgb(236, 95, 165); }
   }
+@media {max-width: 600px} {
+  h2{
+    font-size : 1.4rem;
+  }
+}
 
 .div1{
   display: flex;
