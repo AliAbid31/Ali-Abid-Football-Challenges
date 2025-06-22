@@ -26,13 +26,7 @@ mongoose.connect(mongoURI)
   });
 
 // Middlewares globaux
-app.use(cors({
-  // Si frontendAppUrl est défini, l'utiliser. Sinon, fallback sur l'URL de dev local de Vite.
-  origin: frontendAppUrl || "https://ali-abid-football-challenges.vercel.app",
-  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"], // Ajoute les méthodes que tu utilises
-  allowedHeaders: ["Content-Type", "Authorization"], // En-têtes que ton frontend envoie
-  credentials: true // Si tu gères des cookies/sessions à travers les domaines (moins courant pour API token)
-})); // Permettre les requêtes cross-origin
+app.use(cors());
 app.use(express.json()); // Pour parser le JSON dans le corps des requêtes
 
 // Utilisation des routes
