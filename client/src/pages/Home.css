@@ -1,0 +1,461 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.sectionlogin {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: transparent; /* Pour laisser voir l'animation du body */
+}
+
+.auth-welcome {
+  animation: fadeIn 1s ease-out;
+}
+
+.auth-welcome h2 {
+  font-size: 3rem; /* Ajusté pour être plus grand */
+  color: #ffffff;
+  width: auto; /* Pour que l'animation de frappe fonctionne depuis 0 */
+  border-right: 0.2em solid red; /* Curseur pour l'effet de frappe */
+  animation:
+      typing 3s steps(30, end) forwards, /* Animation de frappe */
+      blink-caret .75s step-end infinite, /* Clignotement du curseur */
+      hide-typing-cursor 3s forwards; /* Cache le curseur après la frappe */
+  margin-bottom: 1.5rem; /* Espace sous le titre */
+}
+.div12, .div13:hover{
+  cursor: pointer;
+}
+
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 33ch; } /* S'ajuste au contenu du h2 */
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: red; }
+}
+
+@keyframes hide-typing-cursor {
+  to { border-right-color: transparent; }
+}
+
+
+.auth-welcome .line { /* Ciblage plus spécifique */
+  height: 3px;
+  background-color: red;
+  width: 0; /* Commence invisible */
+  margin: 0 auto 2rem auto; /* Centrée, espace en dessous */
+  animation: expandLine 1s ease-out 3s forwards; /* Se déclenche après l'animation de frappe */
+}
+
+@keyframes expandLine {
+  from { width: 0; }
+  to { width: 50%; } /* Ou 100% de son conteneur si le h2 est moins large */
+}
+
+
+/* Groupe de boutons Login/Register */
+.button-group {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1.5rem; /* Espace entre les boutons */
+  justify-content: center;
+  animation: fadeInUp 1s ease-out 0.5s forwards; /* Apparition après le titre */
+  opacity: 0; /* Commence invisible pour l'animation */
+}
+
+.login-btn, .register-btn {
+  font-family: 'VT323', monospace;
+  font-size: 1.5rem;
+  padding: 10px 30px;
+  border: 2px solid white;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.login-btn:hover, .register-btn:hover {
+  background-color: white;
+  color: #271258; /* Une des couleurs de fond pour le contraste */
+  transform: scale(1.05);
+}
+
+/* Styles pour le formulaire de login/register */
+.auth-form {
+  background-color: rgba(0, 0, 0, 0.3); /* Fond légèrement transparent pour le formulaire */
+  padding: 2rem;
+  border-radius: 8px;
+  cursor : pointer;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  min-width: 300px; /* Largeur minimale */
+  max-width: 400px; /* Largeur maximale */
+  width: 90%;
+  animation: zoomIn 0.5s ease-out;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.3); /* Ombre rouge subtile */
+}
+
+.form-title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #ff6347; /* Couleur tomate pour le titre du formulaire */
+}
+
+.auth-form input[type="text"],
+.auth-form input[type="password"] {
+  font-family: 'VT323', monospace;
+  width: calc(100% - 20px); /* Prend toute la largeur moins le padding */
+  padding: 10px;
+  margin-bottom: 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.auth-form input[type="text"]::placeholder,
+.auth-form input[type="password"]::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between; /* Espace les boutons "Back" et "Submit" */
+  margin-top: 1rem;
+}
+
+.back-btn, .submit-btn-login, .submit-btn-register {
+  font-family: 'VT323', monospace;
+  padding: 10px 20px;
+  margin: 0.5vw;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}
+
+.auth-form input[type="text"],
+.auth-form input[type="password"],
+.auth-form input[type="email"] {  /* AJOUTEZ cette ligne */
+  font-family: 'VT323', monospace;
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 1rem;
+  background-color: rgba(0, 0, 0, 0.7); /* CHANGEZ pour un fond plus foncé */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  color: white; /* Le texte sera blanc */
+  font-size: 1.2rem;
+}
+
+.auth-form input[type="text"]::placeholder,
+.auth-form input[type="password"]::placeholder,
+.auth-form input[type="email"]::placeholder {  /* AJOUTEZ cette ligne */
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.auth-form input {
+  color: white !important;
+}
+
+.back-btn {
+  background-color: #6c757d; /* Gris */
+  color: white;
+}
+.back-btn:hover {
+  background-color: #5a6268;
+}
+
+.submit-btn-login {
+  background-color: #28a745; /* Vert */
+  color: white;
+}
+.submit-btn-login:hover {
+  background-color: #218838;
+}
+
+.submit-btn-register {
+  background-color: #007bff; /* Bleu */
+  color: white;
+}
+.submit-btn-register:hover {
+  background-color: #0069d9;
+}
+
+.error-message {
+  color: #ff3860; /* Rouge vif pour les erreurs */
+  background-color: rgba(255, 56, 96, 0.1);
+  border: 1px solid rgba(255, 56, 96, 0.5);
+  padding: 10px;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  animation: shake 0.5s; /* Petite animation pour l'erreur */
+}
+
+/* Animations générales d'apparition */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+body {
+  animation: change 4s infinite ease-in-out;
+  overflow: hidden;
+}
+.div11, .div12, .div13 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 26vw;
+}
+.section1 p {
+  font-family: monospace;
+  margin-top: 2vh; /* Ajuste ici pour descendre le texte */
+  font-size: 3vw; /* Ajustable aussi si nécessaire */
+}
+
+.div11 img,
+.div12 img,
+.div13 img {
+  height: 40vh;
+  width: 100%; /* prend tout le conteneur sans dépasser */
+  object-fit: cover;
+  margin-bottom: 1vh;
+}
+
+@keyframes change{
+  0%{
+      background-color: #271258;
+  }
+  50%{
+      background-color: #133687;
+  }
+  100%{
+      background-color: #271248;
+  }
+}
+  img:hover {
+      transform: scale(1.1);
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+  }
+  .div11 p {
+      color: rgb(93, 169, 236);
+      animation: color_change 3s infinite;
+  }
+  @keyframes color_change {
+      0% { color: rgb(93, 169, 236); }
+      50% { color: #159a67; }
+      100% { color: rgb(51, 130, 199); }
+  }
+  .div12 p {
+      color: rgb(93, 169, 236);
+      animation: color_change2 3s infinite;
+  }
+  @keyframes color_change2 {
+      0% { color: rgb(185, 233, 123); }
+      50% { color: rgb(224, 125, 26); }
+      100% { color: #a3dd1a; }
+
+  }
+  *{font-family: monospace;}
+  
+  .section1 {
+    animation: change 4s infinite ease-in-out;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+  h2 {
+      position: relative;
+      top: 2vh; /* Déplace le titre plus haut */
+      margin-bottom: 5vh;
+      font-size: 2rem;
+      color: white;
+      white-space: nowrap;
+      font-family: 'VT323', monospace;
+      overflow: hidden;
+      width: 0;
+      animation: 
+          typing 3s steps(30, end) forwards,
+          hide-cursor 0.1s forwards 3s;
+      border-right: 0.4vh solid red; /* Curseur rouge */
+  }
+  
+  /* Animation de frappe au clavier */
+  @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+  }
+  .line{
+      position: relative;
+      animation: appear 3s forwards;
+  }
+  @keyframes appear {
+      0% { width: 0; }
+      100% { width: 100%; }
+  }
+  
+  /* Disparition du curseur */
+  @keyframes hide-cursor {
+      to { border-right-color: transparent; }
+  }
+  p {
+      position: relative;
+      display: inline-block;
+      transition: all 0.3s ease;
+  }
+
+  p:hover {
+      transform: scale(1.05);
+      z-index: 10;
+  }
+
+  /* Fond coloré qui s'agrandit */
+  p::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background-color: currentColor;
+      transform: translate(-50%, -50%);
+      transition: all 0.3s ease;
+      z-index: -1;
+      opacity: 0.3;
+      border-radius: 5px;
+  }
+
+  p:hover::before {
+      width: calc(100% + 20px);
+      height: calc(100% + 20px);
+      opacity: 0.7;
+  }
+  img{
+      margin-top: 2vh;
+      display: block;
+  }
+
+  /* Bordure qui apparaît */
+  p:hover {
+      border-color: currentColor;
+  }
+
+  /* Ligne de soulignement */
+  p::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 100%;
+      height: 2px;
+      background: black;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+  }
+
+  p:hover::after {
+      transform: scaleX(1);
+  }
+  .div13 p {
+      color: rgb(93, 169, 236);
+      animation: color_change 3s infinite;
+  }
+  @keyframes color_change {
+      0% { color: rgb(236, 93, 155); }
+      50% { color: #9a8415; }
+      100% { color: rgb(236, 95, 165); }
+  }
+  @media (max-width: 700px) {
+    h2{
+      font-size : 1vw;
+      position: relative;
+    }
+  }
+
+.div1{
+  display: flex;
+  background-color: black;
+}
+.typing-text {
+font-size: 2.5rem;
+color: rgb(140, 223, 140);
+white-space: nowrap;
+overflow: hidden;
+border-right: 2px solid rgb(194, 16, 16);
+width: 0;
+animation: typing 4s steps(25, end) forwards, hide-cursor 0.1s forwards;
+animation-delay: 0s, 4s; /* 2 animations, 2 timings */
+}
+
+.underline {
+height: 3px;
+width: 0;
+background-color: red;
+margin-top: 5px;
+animation: underline-grow 4s forwards;
+animation-delay: 4s;
+}
+@keyframes hide-cursor {
+to {
+border-right: none;
+}
+}
+
+/* Animation du texte lettre par lettre */
+@keyframes typing {
+from { width: 0; }
+to { width: 33ch; } /* Ajuste selon le nombre de caractères */
+}
+
+/* Animation de la ligne */
+@keyframes underline-grow {
+from { width: 0; }
+to { width: 100%; }
+}

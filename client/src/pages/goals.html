@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>100 000 GOALS CHALLENGE</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Jaro&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Chemin corrigé si ball.ico est à la racine de /public -->
+    <link rel="icon" href="/ball.ico" />
+    <style>
+      /* Votre CSS (identique à la version précédente) */
+      * { box-sizing: border-box; font-family: 'Jaro', sans-serif; margin: 0; padding: 0; }
+      body { background-color: black; color: #00aaff; overflow-x: hidden; overflow-y: auto; }
+      .container { display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding: 2vh 5vw; gap: 3vh; }
+      h1 { font-size: 4vw; text-align: center; color: #E1219E; }
+      button { display: flex; align-items: center; justify-content: center; gap: 1vw; font-size: 1.5vw; width: 10vw; height: 5vh; background-color: #a59e9e; border: 0.2vw solid #dbcdcd; border-radius: 0.8rem; cursor: pointer; }
+      button i { font-size: 2vw; color: #00aaff; }
+      .image-container { display: flex; flex-direction: column; align-items: center; gap: 1vh; }
+      .image-container img { width: 7vw; height: auto; max-width: 15rem; }
+      .image-container p { font-size: 2.5vw; margin: 0; }
+      .inputs { display: flex; flex-wrap: wrap; justify-content: center; gap: 1vh 1vw; margin-top: 2vh; width: 100%; }
+      @media (min-width: 701px) { .inputs input { width: calc(20% - 1vw); max-width: none; height: 4vh; } }
+      .inputs input { padding: 1vh 1vw; font-size: 1.2vw; border: 0.1rem solid #00aaff; border-radius: 0.5rem; height: 4vh; background-color: #111; color: #00aaff; text-align: center; }
+      .goals-number { font-size: 3vw; color: aquamarine; }
+      .divp{ position: absolute; top: 1vh; right: 2vw; z-index: 1000; }
+      .divp i { color: #00aaff; font-size: 2vw; cursor: pointer; }
+      .challenge-leaderboard-container { background-color: #111; padding: 15px; border-radius: 8px; width: 80%; max-width: 600px; text-align: center; border: 1px solid #00aaff; margin-top: 2vh; margin-bottom: 2vh; }
+      .challenge-leaderboard-container h3 { color: #E1219E; margin-bottom: 10px; }
+      .challenge-leaderboard-list { list-style-type: decimal; padding-left: 20px; color: aquamarine; text-align: left; }
+      .challenge-leaderboard-list li { margin-bottom: 5px; }
+      .leaderboard-loading, .leaderboard-empty-message { font-style: italic; color: #aaa; }
+      .username { font-weight: bold; color: white; margin-right: 10px; }
+      .score { color: #00ffaa; }
+      @media (max-width: 700px) { h1 { font-size: 7vw; } button { font-size: 3vw; width: 25vw; height: 5vh; gap: 2vw; } button i { font-size: 3vw; } .image-container img { width: 15vw; } .image-container p { font-size: 5vw; } .inputs input { font-size: 2.5vw; width: calc(48% - 1vw); padding: 1.5vh 2vw; height: 5vh; } .goals-number { font-size: 5vw; } .divp i { font-size: 5vw; } .help { font-size: 2.5vw; max-width: 60vw; padding: 10px; } }
+      .inputs input:hover { border-inline: 0.5vh solid #00aaff; cursor: pointer; }
+      .inputs input:active { border-inline: 0.5vh solid #00aaff; }
+      .inputs input[data-locked="true"] { color: #00ffaa; background-color: rgba(0, 255, 170, 0.1); border: 0.15rem solid #00ffaa; cursor: not-allowed; }
+      .inputs input::placeholder { color: #aaa; text-align: center; pointer-events: none; }
+      .help { display: none; position: absolute; top: 3vh; right: 0; font-weight: 900; background-color: rgba(0, 0, 0, 0.95); color: #00ffaa; padding: 10px; margin-top: 1.5vh; font-size: 0.9vw; max-width: 20vw; z-index: 999; white-space: pre-line; border-radius: 5px; border: 1px solid #00ffaa; }
+    </style>
+  </head>
+  <body>
+    <section class="container">
+      <div class="div1">
+        <h1>100 000 GOALS CHALLENGE</h1>
+      </div>
+      <div class="divp">
+        <i  style="color: #00aaff;" class="bi bi-question-circle" title="Help">Help</i>
+        <p class="help"  style="color: #00ffaa; font-family: 'Courier New', monospace;">
+          <span style="color: #E1219E; font-weight: bold;">Concept:</span><br>
+          Click on the inputs to add goals.<br>
+          Each input has a multiplier (1x, 2x, 3x, etc.).<br>
+          The goal is to reach 100,000 goals.<br>
+        </p>
+      </div>
+      <div class="challenge-leaderboard-container">
+        <h3>Top Scores Goals (Objectif: 100 000+)</h3>
+        <ol id="goals-specific-leaderboard-list" class="challenge-leaderboard-list">
+          <li class="leaderboard-loading">Chargement du classement...</li>
+        </ol>
+      </div>
+      <div class="div2">
+        <button type="button">
+          <i class="fas fa-rotate-right icone"></i>
+          Restart
+        </button>
+      </div>
+      <div class="image-container">
+        <!-- Chemin corrigé si icons_processed est à la racine de /public -->
+        <img src="/icons_processed/processed_Ronaldo.png" alt="Player Image" />
+        <p></p>
+      </div>
+      <div class="inputs">
+        <!-- Inputs (inchangés) -->
+        <input data-mult="1" type="text" placeholder="Career" readonly/> <input data-mult="1" type="text" placeholder="Career" readonly/> <input data-mult="1" type="text" placeholder="Career" readonly/> <input data-mult="1" type="text" placeholder="Career" readonly/> <input data-mult="1" type="text" placeholder="Career" readonly/> <input data-mult="2" type="text" placeholder="Double" readonly/> <input data-mult="2" type="text" placeholder="Double" readonly/> <input data-mult="2" type="text" placeholder="Double" readonly/> <input data-mult="2" type="text" placeholder="Double" readonly/> <input data-mult="3" type="text" placeholder="Treple" readonly/> <input data-mult="3" type="text" placeholder="Treple" readonly/> <input data-mult="3" type="text" placeholder="Treple" readonly/> <input data-mult="3" type="text" placeholder="Treple" readonly/> <input data-mult="4" type="text" placeholder="Quadruple" readonly/> <input data-mult="4" type="text" placeholder="Quadruple" readonly/> <input data-mult="4" type="text" placeholder="Quadruple" readonly/> <input data-mult="5" type="text" placeholder="xFive" readonly/> <input data-mult="5" type="text" placeholder="xFive" readonly/> <input data-mult="5" type="text" placeholder="xFive" readonly/> <input data-mult="7" type="text" placeholder="xSeven" readonly/> <input data-mult="7" type="text" placeholder="xSeven" readonly/> <input data-mult="8" type="text" placeholder="xEight" readonly/> <input data-mult="8" type="text" placeholder="xEight" readonly/> <input data-mult="10" type="text" placeholder="xTen" readonly/> <input data-mult="15" type="text" placeholder="x15" readonly/> <input data-mult="20" type="text" placeholder="x20" readonly/> <input data-mult="25" type="text" placeholder="x25" readonly/> <input data-mult="30" type="text" placeholder="x30" readonly/>
+      </div>
+      <p class="goals-number">Goals : 0</p>
+    </section>
+
+    <script type="module">
+      console.log("SCRIPT GOALS.HTML PARSÉ ET EXÉCUTÉ INITIALEMENT");
+
+      import { players } from '../data/players.js';
+      console.log("IMPORT players TERMINÉ. Type de 'players':", typeof players, "Contenu:", players ? players.slice(0, 5) : "N/A"); // Log seulement les 5 premiers pour éviter de surcharger
+      if (players && players.length > 0) {
+         console.log("Premier joueur (pour vérifier la structure):", players[0]);
+         console.log("Buts du premier joueur:", players[0].goals, "Type:", typeof players[0].goals);
+      } else if (!players) {
+        console.error("L'objet 'players' est undefined après l'import ! Vérifiez le chemin et le fichier players.js.");
+      } else {
+        console.warn("L'objet 'players' est vide après l'import.");
+      }
+
+      // --- Variables globales du script ---
+      let totalGoals = 0;
+      let currentPlayer = null;
+      let lockedInputs = 0;
+      let rotationInterval;
+      let rotationCount = 0;
+      const MAX_ROTATIONS = 15;
+
+      // --- Références DOM (seront assignées dans DOMContentLoaded) ---
+      let restartButton, textInputs, imageContainer, textContainer, goalDisplay, help, helpIcon, goalsSpecificLeaderboardList;
+
+      // --- Fonctions ---
+      function startRotation() {
+        console.log("[startRotation] Fonction appelée");
+        rotationCount = 0;
+        clearInterval(rotationInterval);
+
+        if (!players || !Array.isArray(players) || players.length === 0) {
+            console.error("[startRotation] ERREUR: La liste des joueurs est invalide ou vide.", players);
+            if(textContainer) textContainer.textContent = "Erreur Joueurs!";
+            return;
+        }
+        if(!imageContainer || !textContainer) {
+            console.error("[startRotation] ERREUR: imageContainer ou textContainer non défini (DOM pas prêt?).");
+            return;
+        }
+
+        rotationInterval = setInterval(() => {
+            if (players.length === 0) { clearInterval(rotationInterval); return; }
+            const randomNumber = Math.floor(Math.random() * players.length);
+            currentPlayer = players[randomNumber];
+
+            if (currentPlayer && typeof currentPlayer.name2 === 'string' && typeof currentPlayer.name === 'string') {
+                // Chemin corrigé si icons_processed est à la racine de /public
+                imageContainer.src = '/icons_processed/processed_' + currentPlayer.name2 + '.png';
+                textContainer.textContent = currentPlayer.name;
+            } else {
+                console.error("[startRotation - interval] ERREUR: Données du joueur incorrectes ou manquantes.", currentPlayer);
+                // Vous pourriez vouloir afficher un état d'erreur ici
+                textContainer.textContent = "?";
+            }
+
+            rotationCount++;
+            if (rotationCount >= MAX_ROTATIONS) {
+                clearInterval(rotationInterval);
+                console.log("[startRotation] Rotation terminée. Joueur final:", currentPlayer ? currentPlayer.name : "Aucun");
+            }
+        }, 200);
+      }
+
+      async function updateUserScoreOnChallengeComplete() {
+        console.log("uiuiukljo")
+        console.log("[updateUserScoreOnChallengeComplete] Fonction appelée. totalGoals:", totalGoals);
+        const token = localStorage.getItem('token');
+        console.log("[updateUserScoreOnChallengeComplete] Token:", token);
+
+        if (!token) {
+            console.log("[updateUserScoreOnChallengeComplete] Pas de token. Arrêt.");
+            alert("Veuillez vous connecter pour enregistrer votre score.");
+            return;
+        }
+
+        const payload = { score: totalGoals, challengeType: "goals" };
+        console.log("[updateUserScoreOnChallengeComplete] Payload:", payload);
+        console.log("[updateUserScoreOnChallengeComplete] Tentative de FETCH PUT vers /api/auth/challenges/score...");
+
+        try {
+            const response = await fetch('/api/auth/challenges/score', {
+                method: 'PUT', // Correspond au backend
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(payload)
+            });
+
+            console.log("[updateUserScoreOnChallengeComplete] Fetch terminé. Status:", response.status);
+            let responseData;
+            try {
+                const contentType = response.headers.get("content-type");
+                if (contentType && contentType.indexOf("application/json") !== -1) {
+                    responseData = await response.json();
+                } else {
+                    responseData = { message: await response.text() };
+                }
+                console.log("[updateUserScoreOnChallengeComplete] Réponse du serveur:", responseData);
+            } catch (parseError) {
+                console.error("[updateUserScoreOnChallengeComplete] Erreur lors du parsing de la réponse:", parseError);
+                responseData = { message: "Réponse serveur invalide" }; // Fournir un objet par défaut
+            }
+
+
+            if (response.ok) {
+                console.log("Score enregistré avec succès !");
+                alert(`Score enregistré ! Nouveau meilleur score pour Goals: ${responseData.newScore || totalGoals}`);
+                // Optionnel : Rafraîchir le leaderboard ici si nécessaire
+                if (typeof fetchAndDisplayGoalsPageLeaderboard === 'function') {
+                   fetchAndDisplayGoalsPageLeaderboard();
+                }
+            } else {
+                const errorMsg = responseData.error || responseData.message || `Erreur serveur ${response.status}`;
+                console.error("Échec de l'enregistrement du score:", errorMsg);
+                alert(`Échec de l'enregistrement du score: ${errorMsg}`);
+            }
+        } catch (networkError) {
+            console.error("[updateUserScoreOnChallengeComplete] Erreur réseau ou JS:", networkError);
+            alert("Erreur réseau lors de l'enregistrement du score. Vérifiez votre connexion et la console.");
+        }
+      }
+
+      function handleInputClick(clickedInput) {
+         console.log("[handleInputClick] APPELÉE pour:", clickedInput.placeholder, "Verrouillé?", clickedInput.dataset.locked);
+         if (clickedInput.dataset.locked === 'true') {
+             console.log("[handleInputClick] Input déjà verrouillé.");
+             return;
+         }
+
+         console.log("[handleInputClick] Joueur actuel:", currentPlayer);
+         if (!currentPlayer || typeof currentPlayer.goals === 'undefined' || currentPlayer.goals === null) {
+             console.error("[handleInputClick] ERREUR: Données joueur invalides (currentPlayer ou currentPlayer.goals).", currentPlayer);
+             clearInterval(rotationInterval);
+             alert("Erreur: Données du joueur invalides. Vérifiez console & players.js.");
+             return;
+         }
+
+         const multiplier = parseInt(clickedInput.dataset.mult);
+         const playerGoals = parseInt(currentPlayer.goals);
+
+         console.log(`[handleInputClick] Multiplier: ${multiplier}, Joueur Goals: ${currentPlayer.goals}, Parsed Goals: ${playerGoals}`);
+
+         if (isNaN(playerGoals)) {
+             console.error(`[handleInputClick] ERREUR: currentPlayer.goals (${currentPlayer.goals}) n'est pas un nombre valide.`);
+             alert("Erreur: Buts du joueur invalides. Vérifiez console & players.js.");
+             return;
+         }
+         if (isNaN(multiplier)) {
+             console.error("[handleInputClick] ERREUR: Multiplicateur invalide pour input", clickedInput);
+             return; // Ne devrait pas arriver si data-mult est toujours un nombre
+         }
+
+         const goalsToAdd = playerGoals * multiplier;
+         console.log("[handleInputClick] Goals à ajouter:", goalsToAdd);
+
+         // Vérifier si goalsToAdd est un nombre avant de l'ajouter
+         if (!Number.isFinite(goalsToAdd)) {
+            console.error(`[handleInputClick] ERREUR: goalsToAdd n'est pas un nombre fini (${goalsToAdd}). Calcul: ${playerGoals} * ${multiplier}`);
+            alert("Erreur de calcul des buts à ajouter. Vérifiez la console.");
+            return;
+         }
+
+
+         totalGoals += goalsToAdd;
+         console.log("[handleInputClick] totalGoals après ajout:", totalGoals);
+         if(goalDisplay) goalDisplay.textContent = `Goals : ${totalGoals}`;
+
+         clickedInput.value = `${clickedInput.placeholder} ${currentPlayer.name} : ${goalsToAdd}`;
+         clickedInput.style.textAlign = 'center';
+         clickedInput.style.fontWeight = 'bold';
+         clickedInput.dataset.locked = 'true';
+         lockedInputs++;
+         console.log("[handleInputClick] lockedInputs count:", lockedInputs);
+
+         // --- Vérification de fin de partie ---
+         if (lockedInputs === textInputs.length) {
+           console.log("[handleInputClick] FIN DE PARTIE. totalGoals:", totalGoals);
+           if (totalGoals >= 100000) {
+             console.log("[handleInputClick] Victoire! Mise à jour de l'affichage...");
+             if(goalDisplay) {
+                 goalDisplay.textContent = `Goals : ${totalGoals} - Congratulations!`;
+                 goalDisplay.style.color = 'green';
+             }
+             textInputs.forEach(inp => {
+               inp.style.border = '0.15rem solid green';
+               inp.style.color = 'green';
+             });
+             console.log("[handleInputClick] APPEL DE updateUserScoreOnChallengeComplete...");
+             updateUserScoreOnChallengeComplete(); // <<<< L'APPEL EST ICI MAINTENANT
+           } else {
+             console.log("[handleInputClick] Perdu. Mise à jour de l'affichage...");
+             if(goalDisplay) {
+                 goalDisplay.textContent = `Goals : ${totalGoals} - You Lost!`;
+                 goalDisplay.style.color = 'red';
+             }
+             textInputs.forEach(inp => {
+               inp.style.border = '0.15rem solid red';
+               inp.style.color = 'red';
+             });
+           }
+         } else {
+           startRotation(); // Rotation pour le prochain clic
+         }
+      }
+
+      async function fetchAndDisplayGoalsPageLeaderboard() {
+        console.log("[fetchAndDisplayGoalsPageLeaderboard] Fonction appelée");
+        if(!goalsSpecificLeaderboardList) {
+            console.error("[fetchAndDisplayGoalsPageLeaderboard] ERREUR: Element leaderboard introuvable.");
+            return;
+        }
+        goalsSpecificLeaderboardList.innerHTML = '<li class="leaderboard-loading">Chargement du classement...</li>';
+        try {
+            // Chemin API corrigé
+            const response = await fetch('/api/auth/challenges/leaderboard/goals');
+            console.log("[fetchAndDisplayGoalsPageLeaderboard] Statut réponse:", response.status);
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                console.error(`[fetchAndDisplayGoalsPageLeaderboard] Échec fetch: ${response.status}`, errorText);
+                goalsSpecificLeaderboardList.innerHTML = `<li class="leaderboard-empty-message">Erreur chargement (status ${response.status}).</li>`;
+                return;
+            }
+            const leaderboardData = await response.json();
+            console.log("[fetchAndDisplayGoalsPageLeaderboard] Données reçues:", leaderboardData);
+            goalsSpecificLeaderboardList.innerHTML = '';
+            if (leaderboardData && leaderboardData.length > 0) {
+                leaderboardData.forEach(entry => {
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `<span class="username">${escapeHTML(entry.username)}</span> <span class="score">${entry.score}</span>`;
+                    goalsSpecificLeaderboardList.appendChild(listItem);
+                });
+            } else {
+                goalsSpecificLeaderboardList.innerHTML = '<li class="leaderboard-empty-message">Pas encore de scores > 100 000 !</li>';
+            }
+        } catch (error) {
+            console.error('[fetchAndDisplayGoalsPageLeaderboard] ERREUR JS/Réseau:', error);
+            goalsSpecificLeaderboardList.innerHTML = '<li class="leaderboard-empty-message">Impossible de charger le classement.</li>';
+        }
+      }
+
+      function escapeHTML(str) {
+        // ... (fonction escapeHTML)
+        const div = document.createElement('div');
+        div.appendChild(document.createTextNode(str || ""));
+        return div.innerHTML;
+      }
+
+      // --- Écouteur d'événement principal pour l'initialisation ---
+      document.addEventListener('DOMContentLoaded', () => {
+        console.log(">>>>>> DOMContentLoaded DÉCLENCHÉ <<<<<<");
+
+        // Assignation des références DOM
+        restartButton = document.querySelector('.div2 button');
+        textInputs = document.querySelectorAll('.inputs input');
+        imageContainer = document.querySelector('.image-container img');
+        textContainer = document.querySelector('.image-container p');
+        goalDisplay = document.querySelector('.goals-number');
+        help = document.querySelector('.divp .help');
+        helpIcon = document.querySelector('.divp i.bi-question-circle');
+        goalsSpecificLeaderboardList = document.getElementById('goals-specific-leaderboard-list');
+
+        // Logs de vérification des éléments DOM
+        console.log("DOM - Restart button:", restartButton ? "Trouvé" : "NON TROUVÉ");
+        console.log("DOM - Text inputs count:", textInputs.length);
+        console.log("DOM - Image container:", imageContainer ? "Trouvé" : "NON TROUVÉ");
+        console.log("DOM - Text container:", textContainer ? "Trouvé" : "NON TROUVÉ");
+        console.log("DOM - Goal display:", goalDisplay ? "Trouvé" : "NON TROUVÉ");
+        console.log("DOM - Help icon:", helpIcon ? "Trouvé" : "NON TROUVÉ");
+        console.log("DOM - Help element:", help ? "Trouvé" : "NON TROUVÉ");
+        console.log("DOM - Leaderboard List:", goalsSpecificLeaderboardList ? "Trouvé" : "NON TROUVÉ");
+
+        // Attachement des écouteurs UNIQUEMENT si les éléments existent
+        console.log("first lenght ")
+        console.log(textInputs.length)
+        if (textInputs.length > 0) {
+          console.log("second")
+
+          textInputs.forEach(inputEl => {
+            inputEl.addEventListener('click', () => handleInputClick(inputEl));
+          });
+          console.log("Écouteurs Inputs attachés.");
+        } else {
+          console.error("ERREUR: Aucun input trouvé! Clics impossibles.");
+        }
+
+        if (restartButton) {
+          restartButton.addEventListener('click', () => {
+             console.log("Bouton Restart cliqué.");
+             // Réinitialisation améliorée
+             totalGoals = 0;
+             lockedInputs = 0;
+             if (goalDisplay) {
+               goalDisplay.textContent = `Goals : ${totalGoals}`;
+               goalDisplay.style.color = 'aquamarine';
+             }
+             textInputs.forEach(input => {
+                 input.value = '';
+                 input.dataset.locked = 'false';
+                 input.style.border = '0.1rem solid #00aaff';
+                 input.style.backgroundColor = '#111';
+                 input.style.color = '#00aaff';
+                 input.style.fontWeight = 'normal';
+             });
+             console.log("Jeu réinitialisé.");
+             startRotation(); // Relancer la rotation
+          });
+          console.log("Écouteur Restart attaché.");
+        } else {
+          console.error("ERREUR: Bouton Restart non trouvé!");
+        }
+
+        if (helpIcon && help) {
+          helpIcon.addEventListener('click', () => {
+            if (help.style.display === 'block') {
+              helpIcon.style.color = '#00aaff';
+              help.style.display = 'none';
+            } else {
+              helpIcon.style.color = '#E1219E';
+              help.style.display = 'block';
+            }
+          });
+          console.log("Écouteur Help attaché.");
+        } else {
+          console.error("ERREUR: Icône d'aide ou panneau d'aide non trouvé!");
+        }
+
+        // Démarrage initial
+        fetchAndDisplayGoalsPageLeaderboard();
+        startRotation();
+      }); // Fin de DOMContentLoaded
+
+    </script>
+  </body>
+</html>

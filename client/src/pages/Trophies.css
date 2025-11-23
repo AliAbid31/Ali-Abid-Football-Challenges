@@ -1,0 +1,230 @@
+/* Trophies.css */
+.trophies-challenge-container {
+  /* Styles généraux pour la page du challenge des trophées */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2vw;
+  font-family: 'VT323', monospace; /* Ou votre police de jeu */
+  color: white;
+  min-height: 100vh; /* Pour remplir la page si le contenu est court */
+}
+
+.challenge-title h1 {
+  font-size: 2.5em; /* Ou plus grand */
+  color: rgb(30, 181, 181); /* Vert lime pour le titre */
+  margin-bottom: 2vh;
+}
+.help-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.4vw;
+  color: #00aaff;
+  font-size: 1.5vw; /* Ajuste cette taille */
+  cursor: pointer;
+  padding: 0.4vw;
+  border-radius: 4px;
+  background: none !important; /* FORCE aucun fond, même au survol */
+  transition: none !important;  
+}
+
+.help-trigger i { /* Pour FontAwesome */
+  font-size: 1em;
+  color: #00aaff; /* Taille relative au parent .help-trigger */
+}
+/* Si tu utilises <span className="help-icon-char">?</span> à la place de FontAwesome */
+.help-trigger i {
+  font-weight: bold;
+  margin-right: 0.3vw; /* Ou ajuste le gap sur .help-trigger */
+  font-size: 1.1em; /* Un peu plus grand si c'est un simple caractère */
+}
+
+.help-text {
+  background-color: rgba(10, 10, 20, 0.95);
+  color: #00ffaa; /* Couleur du texte d'aide */
+  font-family: 'Courier New', monospace; /* Police spécifique pour l'aide */
+  padding: 1vw;
+  margin-top: 0.6vh;
+  font-size: 0.8vw; /* TAILLE RÉDUITE */
+  max-width: 20vw; /* LARGEUR RÉDUITE */
+  z-index: 999;
+  white-space: pre-line;
+  border-radius: 5px;
+  border: 1px solid #00aaff;
+  line-height: 1.5;
+}
+
+/* Media query pour ajuster sur mobile */
+@media (max-width: 700px) {
+  .help-trigger {
+    font-size: 3.5vw;
+  }
+  .help-text {
+    font-size: 2.5vw;
+    max-width: 70vw;
+    padding: 0.8vw;
+  }
+}
+
+.restart-button-container {
+  margin: 2vw 0;
+}
+.restart-btn {
+  padding: 1vh 2vw;
+  font-size: 1.2em;
+  background-color: #444;
+  border: 1px solid #00aaff;
+  color: #00aaff;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.restart-btn:hover {
+  background-color: #555;
+  color: white;
+}
+.restart-btn i {
+  margin-right: 0.8vw;
+}
+
+
+.player-display { /* Réutilisation du style de Assists.css pour l'image et le nom */
+  margin: 2vw 0;
+  text-align: center;
+}
+.player-image {
+  width: 7vw; /* Ajustez la taille de l'image du club */
+  height: 8vh;
+  object-fit: contain; /* Pour les logos de club, contain est souvent mieux */
+   /* Pour un logo rond */
+  background-color: #222; /* Fond si l'image est transparente */
+  margin-bottom: 1vh;
+}
+.player-name {
+  font-size: 1.8em;
+  color: #00aaff; /* Couleur du nom du club */
+  font-weight: bold;
+}
+.trophies-inputs {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5vw; /* Encore un peu moins d'espace si besoin */
+  width: 90%;
+  max-width: 95vw; /* Un peu plus de place pour la grille */
+  margin-bottom: 2vh;
+}
+
+.game-input {
+  padding: 0.6vh 0.3vw;   /* RÉDUIT ENCORE le padding vertical et horizontal */
+  font-size: 1.1vw;    /* ESSAI AVEC UNE TAILLE EN PIXELS FIXE ET PETITE */
+  /* Si 11px fonctionne, tu peux essayer 12px, 10px, ou revenir à des em plus petits comme 0.65em */
+  font-family: 'Jaro', sans-serif; /* Force la police ici aussi pour être sûr */
+  text-align: center;
+  background-color: #1a1a1a;
+  border: 2px solid #00aaff;
+  color: white; /* Couleur de la VALEUR une fois cliqué */
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+  height: 36px; /* FIXE la hauteur de l'input */
+  /* line-height: 32px; /* Ajuste pour centrer verticalement, doit être < height - (2 * border-width) */
+  /* Pour le centrage vertical, il est parfois plus simple de laisser line-height: normal et utiliser flexbox si besoin, mais essayons sans pour l'instant */
+  display: flex; /* Utiliser flex pour centrer le placeholder */
+  align-items: center; /* Centre verticalement le contenu (le placeholder) */
+  justify-content: center; /* Centre horizontalement le contenu (le placeholder) */
+}
+
+/* Style spécifique pour le texte du placeholder */
+.game-input::placeholder {
+  color: #b0c4de !important; /* Couleur claire, !important pour tester si un autre style l'écrase */
+  opacity: 1 !important;       /* S'assurer qu'il n'est pas transparent */
+  font-size: inherit; /* Hérite la taille de .game-input (11px dans cet exemple) */
+  /* Les propriétés flex du parent (.game-input) devraient centrer le placeholder */
+  /* Pas besoin de text-align ici car le parent l'a déjà et flex le gère */
+  width: 100%; /* Permet au placeholder de prendre toute la largeur pour le centrage flex */
+  display: block; /* S'assurer qu'il se comporte comme un bloc à l'intérieur du flex */
+  text-align: center; /* Redondant si justify-content: center sur le parent, mais ne fait pas de mal */
+}
+
+
+.game-input:hover:not([data-locked="true"]) {
+  background-color: #282828;
+  border-color: white;
+}
+
+.game-input[data-locked="true"] {
+  background-color: #333;
+  cursor: not-allowed;
+  color: #00ffaa;
+  border: 0.15rem solid #00ffaa;
+  /* La couleur du texte de la valeur sera 'white' (de .game-input)
+     ou surchargée par JS (lime/red) */
+}
+
+/* Si tu veux que le texte de la VALEUR (pas le placeholder) change de couleur quand c'est bloqué en vert/rouge */
+.game-input[data-locked="true"][style*="border-color: lime"] {
+  color: lime !important; /* Le !important est pour s'assurer que ça override le 'color: white' de base */
+}
+.game-input[data-locked="true"][style*="border-color: rgb(255, 65, 54)"] { /* #ff4136 */
+  color: #ff4136 !important;
+}
+.score-display { /* Réutilisation pour l'affichage du score */
+  font-size: 2em;
+  font-weight: bold;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  /* La couleur est gérée par JS */
+}
+
+/* Styles pour le leaderboard (si vous l'ajoutez) */
+.challenge-leaderboard-container {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #00aaff;
+  width: 90%;
+  max-width: 500px;
+  margin: 20px auto;
+  text-align: center;
+}
+.challenge-leaderboard-container h3 {
+  color: #f39c12; /* Couleur pour le titre du leaderboard */
+  margin-bottom: 10px;
+}
+.challenge-leaderboard-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.challenge-leaderboard-list li {
+  padding: 8px 0;
+  border-bottom: 1px dashed #444;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1em;
+}
+.challenge-leaderboard-list li:last-child {
+  border-bottom: none;
+}
+.challenge-leaderboard-list .username {
+  color: #e0e0e0;
+}
+.challenge-leaderboard-list .score {
+  color: #00ffaa; /* Vert menthe pour le score */
+}
+.leaderboard-loading, .leaderboard-empty-message {
+  font-style: italic;
+  color: #888;
+}
+.trophies-number {
+  font-size: 3vw;
+  color: aquamarine;
+  background: none !important; /* Désactive le fond */
+  animation: none !important;
+}

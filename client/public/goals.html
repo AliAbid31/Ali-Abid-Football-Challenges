@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>100 000 GOALS CHALLENGE</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Jaro&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="icon" href="./ball.ico" />
+    <style>
+      * {
+        box-sizing: border-box;
+        font-family: 'Jaro', sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: black;
+        color: #00aaff;
+        overflow: hidden;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        padding: 2vh 5vw;
+        gap: 3vh;
+      }
+
+      h1 {
+        font-size: 4vw;
+        text-align: center;
+        color: #E1219E;
+      }
+
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1vw;
+        font-size: 1.5vw;
+        width: 10vw;
+        height: 5vh;
+        background-color: #a59e9e;
+        border: 0.2vw solid #dbcdcd;
+        border-radius: 0.8rem;
+        cursor: pointer;
+      }
+
+      button i {
+        font-size: 2vw;
+        color: #00aaff;
+      }
+
+      .image-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1vh;
+      }
+
+      .image-container img {
+        width: 7vw;
+        height: auto;
+        max-width: 15rem;
+      }
+
+      .image-container p {
+        font-size: 2.5vw;
+        margin: 0;
+      }
+
+      .inputs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1vh 1vw;
+  margin-top: 2vh;
+  width: 100%;
+}
+
+/* Pour les écrans larges (Desktop) */
+    @media (min-width: 701px) {
+      .inputs input {
+        width: calc(20% - 1vw); /* 5 éléments par ligne (100%/5 - gap) */
+        max-width: none;
+    }
+
+    }
+
+      .inputs input {
+        padding: 1vh 1vw;
+        font-size: 1.2vw;
+        border: 0.1rem solid #00aaff;
+        border-radius: 0.5rem;
+        width: 15vw;
+        background-color: #111;
+        color: #00aaff;
+        text-align: center;
+      }
+
+      .goals-number {
+        font-size: 3vw;
+        color: aquamarine;
+      }
+      .divp{
+        position: absolute;
+        top: 1vh;
+        right: 2vw;
+        z-index: 1000;
+      }
+
+      .divp i {
+        color: #00aaff;
+        font-family: "Courier New", monospace;
+        font-size: 2vw;
+        cursor: pointer;
+      }
+
+      @media (max-width: 700px) {
+        body{
+          overflow-x: hidden;
+          overflow-y: scroll;
+        }
+        h1 {
+          font-size: 7vw;
+        }
+
+        button {
+          font-size: 2vw;
+          width: 15vw;
+          height: 3vh;
+          gap: 2vw;
+        }
+
+        button i {
+          font-size: 2vw;
+        }
+
+        .image-container img {
+          width: 4vw;
+        }
+
+        .image-container p {
+          font-size: 5vw;
+        }
+
+        .inputs input {
+          font-size: 2vw;
+          width: 25vw;
+          padding: 1vh 2vw;
+        }
+
+        .goals-number {
+          font-size: 5vw;
+        }
+      }
+      
+      .inputs input:hover {
+        border-inline: 0.5vh solid #00aaff;
+        cursor: pointer;
+      }
+      
+      .inputs input:active {
+        border-inline: 0.5vh solid #00aaff;
+      }
+      
+      .inputs input[data-locked="true"] {
+        color: #00ffaa;
+        background-color: rgba(0, 255, 170, 0.1);
+        border: 0.15rem solid #00ffaa;
+        cursor: not-allowed;
+      }
+
+      .inputs input::placeholder {
+        color: #aaa;
+        text-align: center;
+        pointer-events: none;
+      }
+      .help {
+        display: none;
+        position: absolute;
+        top: 3vh;
+        right: 0;
+        font-weight: 900;
+        background-color: rgba(0, 0, 0, 0.95);
+        color: #00ffaa;
+        padding: 0;
+        margin-top: 1.5vh;
+        font-size: 0.9vw;
+        max-width: 20vw;
+        z-index: 999;
+        white-space: pre-line;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="container">
+      <div class="div1">
+        <h1>100 000 GOALS CHALLENGE</h1>
+      </div>
+      <div class="divp">
+        <i  style="color: #00aaff;" class="bi bi-question-circle" title="Help">Help</i>
+        <p class="help"  style="color: #147668; font-family: 'Courier New', monospace;">
+          <span style="color: #147668;">Concept:</span><br>
+          Click on the inputs to add goals.<br>
+          Each input has a multiplier (1x, 2x, 3x, etc.).<br>
+          The goal is to reach 100,000 goals.<br>
+        </p>
+      </div>
+
+      <div class="div2">
+        <button type="button">
+          <i class="fas fa-rotate-right icone"></i>
+          Restart
+        </button>
+      </div>
+
+      <div class="image-container">
+        <img src="./icons_processed/processed_Ronaldo.png" alt="Player Image" />
+        <p></p>
+      </div>
+
+      <div class="inputs">
+        <!-- Inputs avec data-mult comme multiplicateurs -->
+        <input data-mult="1" type="text" placeholder="Career" readonly/>
+        <input data-mult="1" type="text" placeholder="Career" readonly/>
+        <input data-mult="1" type="text" placeholder="Career" readonly/>
+        <input data-mult="1" type="text" placeholder="Career" readonly/>
+        <input data-mult="1" type="text" placeholder="Career" readonly/>
+        <input data-mult="2" type="text" placeholder="Double" readonly/>
+        <input data-mult="2" type="text" placeholder="Double" readonly/>
+        <input data-mult="2" type="text" placeholder="Double" readonly/>
+        <input data-mult="2" type="text" placeholder="Double" readonly/>
+        <input data-mult="3" type="text" placeholder="Treple" readonly/>
+        <input data-mult="3" type="text" placeholder="Treple" readonly/>
+        <input data-mult="3" type="text" placeholder="Treple" readonly/>
+        <input data-mult="3" type="text" placeholder="Treple" readonly/>
+        <input data-mult="4" type="text" placeholder="Quadruple" readonly/>
+        <input data-mult="4" type="text" placeholder="Quadruple" readonly/>
+        <input data-mult="4" type="text" placeholder="Quadruple" readonly/>
+        <input data-mult="5" type="text" placeholder="xFive" readonly/>
+        <input data-mult="5" type="text" placeholder="xFive" readonly/>
+        <input data-mult="5" type="text" placeholder="xFive" readonly/>
+        <input data-mult="7" type="text" placeholder="xSeven" readonly/>
+        <input data-mult="7" type="text" placeholder="xSeven" readonly/>
+        <input data-mult="8" type="text" placeholder="xEight" readonly/>
+        <input data-mult="8" type="text" placeholder="xEight" readonly/>
+        <input data-mult="10" type="text" placeholder="xTen" readonly/>
+        <input data-mult="15" type="text" placeholder="x15" readonly/>
+        <input data-mult="20" type="text" placeholder="x20" readonly/>
+        <input data-mult="25" type="text" placeholder="x25" readonly/>
+        <input data-mult="30" type="text" placeholder="x30" readonly/>
+      </div>
+      <p class="goals-number">Goals : 0</p>
+    </section>
+
+    <script type="module">
+      import { players } from '../src/data/players.js';
+
+      const restartButton = document.querySelector('button');
+      const textInputs = document.querySelectorAll('.inputs input');
+      const imageContainer = document.querySelector('.image-container img');
+      const textContainer = document.querySelector('.image-container p');
+      const goalDisplay = document.querySelector('.goals-number');
+      const help = document.querySelector('.help');
+      const helpIcon = document.querySelector('.divp i');
+      helpIcon.addEventListener('click', () => {
+        help.classList.toggle('show');
+        if (help.classList.contains('show')) {
+          helpIcon.style.color = '#E1219E';
+          help.style.display = 'block';
+        } else {
+          helpIcon.style.color = '#00aaff';
+          help.style.display = 'none';
+        }
+      });
+
+      let totalGoals = 0;
+      let currentPlayer = null;
+      let lockedInputs = 0;
+      let rotationInterval;
+      let rotationCount = 0;
+      const MAX_ROTATIONS = 15;
+      function startRotation() {
+        rotationCount = 0;
+        clearInterval(rotationInterval);
+        
+        rotationInterval = setInterval(() => {
+          const randomNumber = Math.floor(Math.random() * players.length);
+          currentPlayer = players[randomNumber];
+          
+          imageContainer.src = './icons_processed/processed_' + currentPlayer.name2 + '.png';
+          textContainer.textContent = currentPlayer.name;
+          
+          rotationCount++;
+          
+          if (rotationCount >= MAX_ROTATIONS) {
+            clearInterval(rotationInterval);
+          }
+        }, 200);
+
+      }
+
+      function handleInputClick(input) {
+        if (input.dataset.locked === 'true') return;
+  
+        const multiplier = parseInt(input.dataset.mult);
+        const playerGoals = parseInt(currentPlayer.goals);
+        const goalsToAdd = playerGoals * multiplier;
+  
+        totalGoals += goalsToAdd;
+        goalDisplay.textContent = `Goals : ${totalGoals}`;
+  
+        input.value = `${input.placeholder} ${currentPlayer.name} : ${goalsToAdd}`;
+        input.style.textAlign = 'center';
+        input.style.fontWeight = 'bold';
+  
+        input.dataset.locked = 'true';
+        lockedInputs++;
+  
+        input.style.border = '0.15rem solid grey';
+        input.style.background = 'rgba(0, 255, 170, 0.1)';
+        input.style.color = '#6190C2';
+  
+  // Vérification quand tous les inputs sont remplis
+        if (lockedInputs === textInputs.length) {
+          if (totalGoals >= 100000) {
+            goalDisplay.textContent = `Goals : ${totalGoals} - Congratulations!`;
+            goalDisplay.style.color = 'green';
+            textInputs.forEach(input => {
+              input.style.border = '0.15rem solid green';
+              input.style.color = 'green';
+            })
+          } else {
+            goalDisplay.textContent = `Goals : ${totalGoals} - You Lost!`;
+            goalDisplay.style.color = 'red';
+            textInputs.forEach(input => {
+              input.style.border = '0.15rem solid red';
+              input.style.color = 'red';
+            })
+          }
+        } else {
+          startRotation();
+        }
+      }
+
+      textInputs.forEach(input => {
+        input.addEventListener('click', () => handleInputClick(input));
+      });
+
+      restartButton.addEventListener('click', () => location.reload());
+
+      startRotation();
+    </script>
+  </body>
+</html>

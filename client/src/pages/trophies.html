@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1 000 TROPHIES CHALLENGE</title>
+    <link rel="icon" href="./ball.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Jaro&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+              * {
+        box-sizing: border-box;
+        font-family: 'Jaro', sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: black;
+        color: #00aaff;
+        overflow: hidden;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        padding: 2vh 5vw;
+        gap: 3vh;
+      }
+
+      h1 {
+        font-size: 4vw;
+        text-align: center;
+        color: #E1219E;
+      }
+
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1vw;
+        font-size: 1.5vw;
+        width: 10vw;
+        height: 5vh;
+        background-color: #a59e9e;
+        border: 0.2vw solid #dbcdcd;
+        border-radius: 0.8rem;
+        cursor: pointer;
+      }
+
+      button i {
+        font-size: 2vw;
+        color: #00aaff;
+      }
+
+      .image-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1vh;
+      }
+
+      .image-container img {
+        width: 7vw;
+        height: auto;
+        max-width: 15rem;
+      }
+
+      .image-container p {
+        font-size: 2.5vw;
+        margin: 0;
+      }
+
+      .inputs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1vh 1vw;
+  margin-top: 2vh;
+  width: 100%;
+}
+
+/* Pour les écrans larges (Desktop) */
+    @media (min-width: 701px) {
+      .inputs input {
+        width: calc(20% - 1vw); /* 5 éléments par ligne (100%/5 - gap) */
+        max-width: none;
+    }
+
+    }
+
+      .inputs input {
+        padding: 1vh 1vw;
+        font-size: 1.2vw;
+        border: 0.1rem solid #00aaff;
+        border-radius: 0.5rem;
+        width: 15vw;
+        background-color: #111;
+        color: #00aaff;
+        text-align: center;
+      }
+
+      .trophies-number {
+        font-size: 3vw;
+        color: aquamarine;
+      }
+      .divp{
+        position: absolute;
+        top: 1vh;
+        right: 2vw;
+        z-index: 1000;
+      }
+
+      .divp i {
+        color: #00aaff;
+        font-family: "Courier New", monospace;
+        font-size: 2vw;
+        cursor: pointer;
+      }
+
+      @media (max-width: 700px) {
+        body{
+          overflow-x: hidden;
+          overflow-y: scroll;
+        }
+        h1 {
+          font-size: 7vw;
+        }
+
+        button {
+          font-size: 2vw;
+          width: 15vw;
+          height: 3vh;
+          gap: 2vw;
+        }
+
+        button i {
+          font-size: 2vw;
+        }
+
+        .image-container img {
+          width: 4vw;
+        }
+
+        .image-container p {
+          font-size: 5vw;
+        }
+
+        .inputs input {
+          font-size: 2vw;
+          width: 25vw;
+          padding: 1vh 2vw;
+        }
+
+        .trophies-number {
+          font-size: 5vw;
+        }
+      }
+      
+      .inputs input:hover {
+        border-inline: 0.5vh solid #00aaff;
+        cursor: pointer;
+      }
+      
+      .inputs input:active {
+        border-inline: 0.5vh solid #00aaff;
+      }
+      
+      .inputs input[data-locked="true"] {
+        color: #00ffaa;
+        background-color: rgba(0, 255, 170, 0.1);
+        border: 0.15rem solid #00ffaa;
+        cursor: not-allowed;
+      }
+
+      .inputs input::placeholder {
+        color: #aaa;
+        text-align: center;
+        pointer-events: none;
+      }
+      .help {
+        display: none;
+        position: absolute;
+        top: 3vh;
+        right: 0;
+        font-weight: 900;
+        background-color: rgba(0, 0, 0, 0.95);
+        color: #00ffaa;
+        padding: 0;
+        margin-top: 1.5vh;
+        font-size: 0.9vw;
+        max-width: 20vw;
+        z-index: 999;
+        white-space: pre-line;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="container">
+      <div class="div1">
+        <h1 style="color: #c5e10f;">1 000 TROPHIES CHALLENGE</h1>
+      </div>
+      <div class="divp">
+        <i  style="color: #00aaff;" class="bi bi-question-circle" title="Help">Help</i>
+        <p class="help"  style="color: #147668; font-family: 'Courier New', monospace;">
+          <span style="color: #147668;">Concept:</span><br>
+          Click on the inputs to add clubs trophies.<br>
+          Each input has a multiplier (1x, 2x, 3x, etc.).<br>
+          The goal is to reach 1,000 trophies.<br>
+        </p>
+      </div>
+
+      <div class="div2">
+        <button class="restart-button" type="button">
+          <i class="fas fa-rotate-right icone"></i>
+          Restart
+        </button>
+      </div>
+
+      <div class="image-container">
+        <img style="width: 5vw; height: 10vh;" src="./modified_logos/RealMadrid_60x60.png" alt="Club Image" />
+        <p></p>
+      </div>
+
+      <div class="inputs">
+        <input data-mult="1" name="PLs" type="text" placeholder="Premier-Leagues" readonly/>
+        <input data-mult="2" name="PLs" type="text" placeholder="2xPremier-Leagues" readonly/>
+        <input data-mult="3" name="PLs" type="text" placeholder="3xPremier-Leagues" readonly/>
+        <input data-mult="1" name="Laliga" type="text" placeholder="Laligas" readonly/>
+        <input data-mult="2" name="Laliga" type="text" placeholder="2xLaligas" readonly/>
+        <input data-mult="1" name="Bundesliga" type="text" placeholder="Bundesligas" readonly/>
+        <input data-mult="2" name="Bundesliga" type="text" placeholder="2xBundesligas" readonly/>
+        <input data-mult="1" name="SerieA" type="text" placeholder="SerieA" readonly/>
+        <input data-mult="2" name="SerieA" type="text" placeholder="2xSerieA" readonly/>
+        <input data-mult="1" name="Ligue1" type="text" placeholder="Ligue1" readonly/>
+        <input data-mult="2" name="Ligue1" type="text" placeholder="2xLigue1" readonly/>
+        <input data-mult="1" name="ChampionsLeagues" type="text" placeholder="Champions Leagues" readonly/>
+        <input data-mult="2" name="ChampionsLeagues" type="text" placeholder="2xChampions Leagues" readonly/>
+        <input data-mult="1" name="Leagues" type="text" placeholder="Leagues" readonly/>
+        <input data-mult="2" name="Leagues" type="text" placeholder="2xLeagues" readonly/>
+        <input data-mult="3" name="Leagues" type="text" placeholder="3xLeagues" readonly/>
+        <input data-mult="4" name="Leagues" type="text" placeholder="4xLeagues" readonly/>
+        <input data-mult="1" name="DomesticCups" type="text" placeholder="Domestic Cups" readonly/>
+        <input data-mult="2" name="DomesticCups" type="text" placeholder="2xDomestic Cups" readonly/>
+        <input data-mult="3" name="DomesticCups" type="text" placeholder="3xDomestic Cups" readonly/>
+        <input data-mult="1" name="InternationalCups" type="text" placeholder="International Cups" readonly/>
+        <input data-mult="2" name="InternationalCups" type="text" placeholder="2xInternational Cups" readonly/>
+        <input data-mult="1" name="Total" type="text" placeholder="Total" readonly/>
+        <input data-mult="1" name="Total" type="text" placeholder="Total" readonly/>
+        <input data-mult="1" name="Total" type="text" placeholder="Total" readonly/>
+      </div>
+      <p class="trophies-number">Trophies : 0</p>
+    </section>
+
+    <script type="module">
+      import { clubs } from './../data/clubs.js';
+    
+      const restartButton = document.querySelector('.restart-button');
+      const textInputs = document.querySelectorAll('.inputs input');
+      const imageContainer = document.querySelector('.image-container img');
+      const textContainer = document.querySelector('.image-container p');
+      const TrophiesDisplay = document.querySelector('.trophies-number');
+      const help = document.querySelector('.help');
+      const helpIcon = document.querySelector('.divp i');
+      
+      helpIcon.addEventListener('click', () => {
+        help.classList.toggle('show');
+        if (help.classList.contains('show')) {
+          helpIcon.style.color = '#E1219E';
+          help.style.display = 'block';
+        } else {
+          helpIcon.style.color = '#00aaff';
+          help.style.display = 'none';
+        }
+      });
+    
+      let totalTrophies = 0;
+      let currentClub = null;
+      let lockedInputs = 0;
+      let rotationInterval;
+      let rotationCount = 0;
+      const MAX_ROTATIONS = 15;
+      
+      function startRotation() {
+        rotationCount = 0;
+        clearInterval(rotationInterval);
+        
+        rotationInterval = setInterval(() => {
+          const randomNumber = Math.floor(Math.random() * clubs.length);
+          currentClub = clubs[randomNumber];
+          
+          imageContainer.src = `../../public/modified_logos/${currentClub.name2}_60x60.png`;
+          textContainer.textContent = currentClub.name;
+          
+          rotationCount++;
+          
+          if (rotationCount >= MAX_ROTATIONS) {
+            clearInterval(rotationInterval);
+          }
+        }, 200);
+      }
+    
+      function handleInputClick(input) {
+        if (input.dataset.locked === 'true') return;
+        
+        let TrophiesToAdd = 0;
+        if (currentClub[input.name] !== undefined && currentClub[input.name] !== null) {
+          const multiplier = parseInt(input.dataset.mult);
+          const clubTrophies = parseInt(currentClub[input.name]);
+          TrophiesToAdd = clubTrophies * multiplier;
+          totalTrophies += TrophiesToAdd;
+        }
+    
+        console.log("Current club trophies:", currentClub[input.name]);
+        console.log("Trophies to add:", TrophiesToAdd);
+    
+        TrophiesDisplay.textContent = `Trophies : ${totalTrophies}`;
+        input.value = `${input.placeholder} ${currentClub.name}: ${TrophiesToAdd}`;
+        input.style.textAlign = 'center';
+        input.style.fontWeight = 'bold';
+        input.dataset.locked = 'true';
+        lockedInputs++;
+    
+        input.style.border = '0.15rem solid grey';
+        input.style.background = 'rgba(0, 255, 170, 0.1)';
+        input.style.color = '#6190C2';
+    
+        if (lockedInputs === textInputs.length) {
+          if (totalTrophies >= 1000) {
+            TrophiesDisplay.textContent = `Trophies : ${totalTrophies} - Congratulations!`;
+            TrophiesDisplay.style.color = 'green';
+            textInputs.forEach(i => {
+              i.style.border = '0.15rem solid green';
+              i.style.color = 'green';
+            });
+          } else {
+            TrophiesDisplay.textContent = `Trophies : ${totalTrophies} - You Lost!`;
+            TrophiesDisplay.style.color = 'red';
+            textInputs.forEach(i => {
+              i.style.border = '0.15rem solid red';
+              i.style.color = 'red';
+            });
+          }
+        } else {
+          startRotation();
+        }
+      }
+    
+      textInputs.forEach(input => {
+        input.addEventListener('click', () => {
+          console.log("Input clicked:", input);
+          console.log("Dataset multiplier:", input.dataset.mult);
+          handleInputClick(input);
+        });
+      });
+    
+      restartButton.addEventListener('click', () => location.reload());
+    
+      startRotation();
+    </script>
+  </body>
+</html>
