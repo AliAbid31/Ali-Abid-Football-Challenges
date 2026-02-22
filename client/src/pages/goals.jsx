@@ -286,7 +286,7 @@ const GoalsChallenge = () => {
             style={{background: 'none', transition: 'none', transform: 'none', pointerEvents: 'none'}}
           >
             <span>Concept:</span><br />
-            Click on the inputs to add assists based on the player's stats.<br />
+            Click on the inputs to add goals based on the player's stats.<br />
             Each input has a multiplier (Career, Double, xFive, etc.).<br />
             The goal is to reach 100,000 goals before all inputs are used.<br />
             Good luck!
