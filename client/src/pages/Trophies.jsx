@@ -266,8 +266,8 @@ const TrophiesChallenge = () => {
             style={{background: 'none', transition: 'none', transform: 'none', pointerEvents: 'none'}}
           >
             <span>Concept:</span><br />
-            Click on the inputs to add assists based on the player's stats.<br />
-            Each input has a multiplier (Career, Double, xFive, etc.).<br />
+            Click on the inputs to add trophies based on the trophies won by each club.<br />
+            Each input has a multiplier (1x, 2x, 3x, etc.).<br />
             The goal is to reach 1,000 trophies before all inputs are used.<br />
             Good luck!
           </p>
