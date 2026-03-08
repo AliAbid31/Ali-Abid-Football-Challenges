@@ -413,49 +413,15 @@ body {
       100% { color: rgb(236, 95, 165); }
   }
 @media (max-width: 768px) {
-  
+    h2{
+  font-size : 1vw;
+  position: relative;
+  }
   .auth-welcome h2 {
     font-size: 5.5vw; /* La magie est ici : la taille dépend de la largeur de l'écran */
     white-space: nowrap; /* CRUCIAL : Empêche le texte de passer à la ligne */
     overflow: hidden; /* Essentiel pour que l'animation de frappe fonctionne */
     margin-bottom: 1rem;
-  }
-
-  .section1 h2 {
-    font-size: 5.5vw; 
-    white-space: nowrap;
-    overflow: hidden;
-    margin-bottom: 2vh;
-  }
-
-  .button-group {
-    flex-direction: column; /* Met les boutons l'un sous l'autre sur mobile */
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  .login-btn, .register-btn {
-    width: 80%; /* Les boutons prennent 80% de l'écran */
-    font-size: 1.2rem;
-  }
-
-  .div1 {
-    flex-direction: column; /* Met les 3 images l'une sous l'autre */
-    height: auto !important; /* Laisse le conteneur grandir */
-    padding-bottom: 10vh;
-  }
-  
-  .div11, .div12, .div13 {
-    width: 80vw; /* Les images prennent presque toute la largeur */
-    margin-bottom: 4vh;
-  }
-  
-  .div11 img, .div12 img, .div13 img {
-    height: 30vh; /* Images un peu moins hautes sur téléphone */
-  }
-
-  .section1 p {
-    font-size: 6vw; /* Texte sous les images plus lisible sur mobile */
   }
 }
 
