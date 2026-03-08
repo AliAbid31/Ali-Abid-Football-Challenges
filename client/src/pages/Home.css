@@ -417,6 +417,17 @@ body {
       font-size : 1vw;
       position: relative;
     }
+    .auth-welcome h2{
+      font-size: 1.4rem; /* Ajusté pour être plus grand */
+      color: #ffffff;
+      width: auto; /* Pour que l'animation de frappe fonctionne depuis 0 */
+      border-right: 0.2em solid red; /* Curseur pour l'effet de frappe */
+      animation:
+          typing 3s steps(30, end) forwards, /* Animation de frappe */
+          blink-caret .75s step-end infinite, /* Clignotement du curseur */
+          hide-typing-cursor 3s forwards; /* Cache le curseur après la frappe */
+      margin-bottom: 1.5rem; /* Espace sous le titre */
+    }
   }
 
 .div1{
