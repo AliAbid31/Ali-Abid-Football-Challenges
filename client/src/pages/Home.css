@@ -413,7 +413,7 @@ body {
       100% { color: rgb(236, 95, 165); }
   }
 @media (max-width: 768px) {
-  h2 {
+  .section1 h2 {
     font-size: 5.5vw;
   }
   .auth-welcome h2 {
