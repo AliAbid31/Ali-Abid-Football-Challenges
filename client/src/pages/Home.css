@@ -413,6 +413,9 @@ body {
       100% { color: rgb(236, 95, 165); }
   }
 @media (max-width: 768px) {
+  h2 {
+    font-size: 5.5vw;
+  }
   .auth-welcome h2 {
     font-size: 5.5vw; /* La magie est ici : la taille dépend de la largeur de l'écran */
     white-space: nowrap; /* CRUCIAL : Empêche le texte de passer à la ligne */
